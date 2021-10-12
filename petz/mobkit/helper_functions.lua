@@ -23,7 +23,7 @@ petz.lookat = function(self, pos2)
 end
 
 function petz.bh_check_pack(self)
-	if mobkit.get_closest_entity(self, "petz:"..self.type) then
+	if mobkit.get_closest_entity(self, "hades_petz:"..self.type) then
 		return true
 	else
 		return false

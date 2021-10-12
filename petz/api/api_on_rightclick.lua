@@ -32,7 +32,7 @@ petz.on_rightclick = function(self, clicker)
 	local buy
 
 	if ((self.is_pet) and is_owner and (self.can_be_brushed)) -- If brushing or spread beaver oil
-		and ((wielded_item_name == "petz:hairbrush") or (wielded_item_name == "petz:beaver_oil")) then
+		and ((wielded_item_name == "hades_petz:hairbrush") or (wielded_item_name == "hades_petz:beaver_oil")) then
 			petz.brush(self, wielded_item_name, pet_name)
 	--If feeded
 	elseif mokapi.feed(self, clicker, petz.settings.tamagochi_feed_hunger_rate, S("@1 at full health (@2)", S(petz.first_to_upper(self.type)), tostring(self.hp)), "moaning") then
@@ -64,7 +64,7 @@ petz.on_rightclick = function(self, clicker)
 	elseif self.breed and wielded_item_name == petz.settings[self.type.."_breed"] and not(self.is_baby) then
 		--minetest.chat_send_all("test="..petz.settings[self.type.."_breed"])
 		petz.breed(self, clicker, wielded_item, wielded_item_name)
-	elseif (wielded_item_name == "petz:dreamcatcher") and (self.tamed) and (self.is_pet) and is_owner then
+	elseif (wielded_item_name == "hades_petz:dreamcatcher") and (self.tamed) and (self.is_pet) and is_owner then
 		petz.put_dreamcatcher(self, clicker, wielded_item, wielded_item_name)
 	elseif petz.settings[self.type.."_colorized"] and minetest.get_item_group(wielded_item_name, "dye") > 0  then --Colorize textures
 		local color_group = petz.get_color_group(wielded_item_name)
@@ -90,15 +90,15 @@ petz.on_rightclick = function(self, clicker)
 		else
 			minetest.chat_send_player(clicker:get_player_name(), S("This animal has already been milked."))
 		end
-	elseif (self.is_mountable) and (wielded_item_name == "petz:glass_syringe" or wielded_item_name == "petz:glass_syringe_sperm") then
+	elseif (self.is_mountable) and (wielded_item_name == "hades_petz:glass_syringe" or wielded_item_name == "hades_petz:glass_syringe_sperm") then
 		if not(self.is_baby) then
 			petz.pony_breed(self, clicker, wielded_item, wielded_item_name)
 		end
 	elseif self.bottled and (wielded_item_name == "vessels:glass_bottle") then
 		petz.bottled(self, clicker)
-	elseif (self.type == "pony") and (wielded_item_name == "petz:horseshoe") and (self.owner == player_name) then
+	elseif (self.type == "pony") and (wielded_item_name == "hades_petz:horseshoe") and (self.owner == player_name) then
 		petz.put_horseshoe(self, clicker)
-	elseif (self.type == "pony") and (wielded_item_name == "petz:wagon") and (self.owner == player_name) then
+	elseif (self.type == "pony") and (wielded_item_name == "hades_petz:wagon") and (self.owner == player_name) then
 		petz.put_wagon(self, clicker)
 	elseif self.is_mountable and is_owner then
 		show_form = petz.mount(self, clicker, wielded_item, wielded_item_name)
@@ -119,6 +119,6 @@ petz.on_rightclick = function(self, clicker)
 	end
 	if show_form then
 		petz.pet[player_name]= self
-		minetest.show_formspec(player_name, "petz:form_orders", petz.create_form(player_name, buy))
+		minetest.show_formspec(player_name, "hades_petz:form_orders", petz.create_form(player_name, buy))
 	end
 end

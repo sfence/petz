@@ -24,7 +24,7 @@ for i=1, 2 do
 	local p2 = {x= 0.25, y = 0.0625, z = 0.3125}
 	local collisionbox = petz.get_collisionbox(p1, p2, scale_model, nil)
 
-	minetest.register_entity("petz:"..pet_name,{
+	minetest.register_entity("hades_petz:"..pet_name,{
 		--Petz specifics
 		type = "bee",
 		queen = queen,
@@ -80,8 +80,8 @@ for i=1, 2 do
 			stand_fly={range={x=92, y=98}, speed=30, loop=true},
 		},
 		drops = {
-			{name = "petz:pollen", chance = 3, min = 1, max = 3,},
-			{name = "petz:bee_sting", chance = 3, min = 1, max = 1,},
+			{name = "hades_petz:pollen", chance = 3, min = 1, max = 3,},
+			{name = "hades_petz:bee_sting", chance = 3, min = 1, max = 1,},
 		},
 		sounds = {
 			misc = "petz_bee_hum",
@@ -111,5 +111,5 @@ for i=1, 2 do
 			petz.on_step(self, dtime)
 		end,
 	})
-	petz:register_egg("petz:"..pet_name, S(description), "petz_spawnegg_"..pet_name..".png", false)
+	petz:register_egg("hades_petz:"..pet_name, S(description), "petz_spawnegg_"..pet_name..".png", false)
 end

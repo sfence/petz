@@ -11,7 +11,7 @@ local p1 = {x= -0.125, y = -0.5, z = -0.25}
 local p2 = {x= 0.1875, y = -0.1875, z = 0.1875}
 local collisionbox = petz.get_collisionbox(p1, p2, scale_model, nil)
 
-minetest.register_entity("petz:"..pet_name,{
+minetest.register_entity("hades_petz:"..pet_name,{
 	--Petz specifics
 	type = "frog",
 	is_pet = false,
@@ -26,7 +26,7 @@ minetest.register_entity("petz:"..pet_name,{
 	jump_impulse = 4.0,
 	follow = petz.settings.frog_follow,
 	drops = {
-		{name = "petz:frog_leg", chance = 1, min = 1, max = 1,},
+		{name = "hades_petz:frog_leg", chance = 1, min = 1, max = 1,},
 	},
 	rotate = petz.settings.rotate,
 	physical = true,
@@ -87,4 +87,4 @@ minetest.register_entity("petz:"..pet_name,{
 
 })
 
-petz:register_egg("petz:frog", S("Frog"), "petz_spawnegg_frog.png", true)
+petz:register_egg("hades_petz:frog", S("Frog"), "petz_spawnegg_frog.png", true)

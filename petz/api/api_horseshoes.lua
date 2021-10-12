@@ -47,7 +47,7 @@ petz.horseshoes_reset = function(self)
 	local obj
 	local pos = self.object:get_pos()
 	for i = 1, self.horseshoes do
-		obj = minetest.add_item(pos, "petz:horseshoe")
+		obj = minetest.add_item(pos, "hades_petz:horseshoe")
 		mokapi.drop_velocity(obj)
 	end
 	self.horseshoes = mobkit.remember(self, "horseshoes", 0)

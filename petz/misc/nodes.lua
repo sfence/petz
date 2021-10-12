@@ -11,54 +11,58 @@ end
 
 --Material for Pet's House
 
-minetest.register_node("petz:red_gables", {
+minetest.register_node("hades_petz:red_gables", {
     description = S("Red Gables"),
     tiles = {"petz_red_gables.png"},
     is_ground_content = false,
 	groups = {choppy = 2, stone = 1},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = hades_sounds.node_sound_stone_defaults(),
 })
 
-minetest.register_node("petz:yellow_paving", {
+minetest.register_node("hades_petz:yellow_paving", {
     description = S("Yellow Paving"),
     tiles = {"petz_yellow_paving.png"},
     is_ground_content = false,
 	groups = {cracky = 2, stone = 1},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = hades_sounds.node_sound_stone_defaults(),
 })
 
-minetest.register_node("petz:blue_stained_wood", {
+minetest.register_node("hades_petz:blue_stained_wood", {
     description = S("Blue Stained Wood"),
     tiles = {"petz_blue_stained_planks.png"},
     is_ground_content = false,
     groups = {wood = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 3},
-    sounds = default.node_sound_wood_defaults(),
+    sounds = hades_sounds.node_sound_wood_defaults(),
 })
 
 if minetest.get_modpath("stairs") ~= nil then
     stairs.register_stair_and_slab(
         "red_gables",
-        "petz:red_gables",
+        "hades_petz:red_gables",
         {choppy = 2, stone = 1},
         {"petz_red_gables.png"},
         S("Red Gables Stair"),
+        S("Outer Red Gables Stair"),
+        S("Inner Red Gables Stair"),
         S("Red Gables Slab"),
-        default.node_sound_stone_defaults()
+        hades_sounds.node_sound_stone_defaults()
     )
     stairs.register_stair_and_slab(
         "blue_stained_wood",
-        "petz:blue_stained_wood",
+        "hades_petz:blue_stained_wood",
         {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
         {"petz_blue_stained_planks.png"},
         S("Blue Stained Stair"),
+        S("Outer Blue Stained Stair"),
+        S("Inner Blue Stained Stair"),
         S("Blue Stained Slab"),
-        default.node_sound_wood_defaults()
+        hades_sounds.node_sound_wood_defaults()
     )
 end
 
 --Kennel Schematic
 
-minetest.register_craftitem("petz:kennel", {
+minetest.register_craftitem("hades_petz:kennel", {
     description = S("Kennel"),
     wield_image = "petz_kennel.png",
     inventory_image = "petz_kennel.png",
@@ -88,7 +92,7 @@ minetest.register_craftitem("petz:kennel", {
 
 minetest.register_craft({
     type = "shaped",
-    output = 'petz:kennel',
+    output = 'hades_petz:kennel',
     recipe = {
         {'group:wood', 'dye:red', 'group:wood'},
         {'group:wood', 'dye:blue', 'group:wood'},
@@ -98,13 +102,13 @@ minetest.register_craft({
 
 --Ducky Nest
 
-minetest.register_node("petz:ducky_nest", {
+minetest.register_node("hades_petz:ducky_nest", {
     description = S("Nest"),
     inventory_image = "petz_ducky_nest_inv.png",
     wield_image = "petz_ducky_nest_inv.png",
     tiles = {"petz_ducky_nest.png"},
     groups = {snappy=1, bendy=2, cracky=1},
-    sounds = default.node_sound_wood_defaults(),
+    sounds = hades_sounds.node_sound_wood_defaults(),
     paramtype = "light",
     drawtype = "mesh",
     mesh = 'petz_ducky_nest.b3d',
@@ -120,16 +124,16 @@ minetest.register_node("petz:ducky_nest", {
     on_rightclick = function(pos, node, player, itemstack, pointed_thing)
         if player then
             local itemstack_name = itemstack:get_name()
-            if itemstack_name == "petz:ducky_egg" or itemstack_name == "petz:chicken_egg" then --put the egg
+            if itemstack_name == "hades_petz:ducky_egg" or itemstack_name == "hades_petz:chicken_egg" then --put the egg
 				local egg_type
-				if itemstack_name == "petz:ducky_egg" then
+				if itemstack_name == "hades_petz:ducky_egg" then
 					egg_type = "ducky"
 				else
 					egg_type = "chicken"
 				end
                 itemstack:take_item()
 				player:set_wielded_item(itemstack)
-				minetest.set_node(pos, {name= "petz:".. egg_type .."_nest_egg"})
+				minetest.set_node(pos, {name= "hades_petz:".. egg_type .."_nest_egg"})
 				return itemstack
             end
         end
@@ -138,7 +142,7 @@ minetest.register_node("petz:ducky_nest", {
 
 minetest.register_craft({
     type = "shaped",
-    output = 'petz:ducky_nest',
+    output = 'hades_petz:ducky_nest',
     recipe = {
         {'', '', ''},
         {'group:leaves', '', 'group:leaves'},
@@ -146,13 +150,13 @@ minetest.register_craft({
     }
 })
 
-minetest.register_node("petz:ducky_nest_egg", {
+minetest.register_node("hades_petz:ducky_nest_egg", {
     description = S("Ducky Nest with Egg"),
     inventory_image = "petz_ducky_nest_egg_inv.png",
     wield_image = "petz_ducky_nest_egg_inv.png",
     tiles = {"petz_ducky_nest_egg.png"},
     groups = {snappy=1, bendy=2, cracky=1},
-    sounds = default.node_sound_wood_defaults(),
+    sounds = hades_sounds.node_sound_wood_defaults(),
     paramtype = "light",
     drawtype = "mesh",
     mesh = 'petz_ducky_nest_egg.b3d',
@@ -172,25 +176,25 @@ minetest.register_node("petz:ducky_nest_egg", {
 	on_timer = function(pos)
         local pos_above = {x = pos.x, y = pos.y +1, z= pos.z}
         if pos_above then
-            if not minetest.registered_entities["petz:ducky"] then
+            if not minetest.registered_entities["hades_petz:ducky"] then
                 return
             end
-            minetest.add_entity(pos_above, "petz:ducky")
-            minetest.set_node(pos, {name= "petz:ducky_nest"})
+            minetest.add_entity(pos_above, "hades_petz:ducky")
+            minetest.set_node(pos, {name= "hades_petz:ducky_nest"})
             return true
         end
     end,
 	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
-		petz.extract_egg_from_nest(pos, player, "petz:ducky_egg") --extract the egg
+		petz.extract_egg_from_nest(pos, player, "hades_petz:ducky_egg") --extract the egg
 	end,
 })
 
-minetest.register_node("petz:chicken_nest_egg", {
+minetest.register_node("hades_petz:chicken_nest_egg", {
     description = S("Chicken Nest with Egg"),
     inventory_image = "petz_chicken_nest_egg_inv.png",
     wield_image = "petz_chicken_nest_egg_inv.png",
     groups = {snappy=1, bendy=2, cracky=1},
-    sounds = default.node_sound_wood_defaults(),
+    sounds = hades_sounds.node_sound_wood_defaults(),
     paramtype = "light",
     drawtype = "mesh",
     mesh = 'petz_ducky_nest_egg.b3d',
@@ -212,48 +216,48 @@ minetest.register_node("petz:chicken_nest_egg", {
 	on_timer = function(pos)
 		local pos_above = {x = pos.x, y = pos.y +1, z= pos.z}
 		if pos_above then
-			if not minetest.registered_entities["petz:chicken"] then
+			if not minetest.registered_entities["hades_petz:chicken"] then
 				return
 			end
-			local entity = minetest.add_entity(pos_above, "petz:chicken"):get_luaentity()
+			local entity = minetest.add_entity(pos_above, "hades_petz:chicken"):get_luaentity()
 			entity.is_baby = mobkit.remember(entity, "is_baby", true) --it is a baby
 			entity.growth_time = mobkit.remember(entity, "growth_time", 0.0) --the chicken to grow
-			minetest.set_node(pos, {name= "petz:ducky_nest"})
+			minetest.set_node(pos, {name= "hades_petz:ducky_nest"})
 			return true
 		end
 	end,
 	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
-		petz.extract_egg_from_nest(pos, player, "petz:chicken_egg") --extract the egg
+		petz.extract_egg_from_nest(pos, player, "hades_petz:chicken_egg") --extract the egg
 	end,
 })
 
 minetest.register_craft({
     type = "shaped",
-    output = 'petz:ducky_nest_egg',
+    output = 'hades_petz:ducky_nest_egg',
     recipe = {
         {'', '', ''},
-        {'group:leaves', 'petz:ducky_egg', 'group:leaves'},
+        {'group:leaves', 'hades_petz:ducky_egg', 'group:leaves'},
         {'default:papyrus', 'default:papyrus', 'default:papyrus'},
     }
 })
 
 --Vanilla Wool
-minetest.register_node("petz:wool_vanilla", {
+minetest.register_node("hades_petz:wool_vanilla", {
 	description = S("Vanilla Wool"),
 	tiles = {"wool_vanilla.png"},
 	is_ground_content = false,
 	groups = {snappy = 2, choppy = 2, oddly_breakable_by_hand = 3,
 		flammable = 3, wool = 1},
-	sounds = default.node_sound_defaults(),
+	sounds = hades_sounds.node_sound_defaults(),
 })
-minetest.register_alias("wool:vanilla", "petz:wool_vanilla")
+minetest.register_alias("wool:vanilla", "hades_petz:wool_vanilla")
 
 --Bird Stand
 
-minetest.register_node("petz:bird_stand", {
+minetest.register_node("hades_petz:bird_stand", {
     description = S("Bird Stand"),
     groups = {snappy=1, bendy=2, cracky=1},
-    sounds = default.node_sound_wood_defaults(),
+    sounds = hades_sounds.node_sound_wood_defaults(),
     paramtype = "light",
     drawtype = "nodebox",
 	node_box = {
@@ -291,12 +295,12 @@ minetest.register_node("petz:bird_stand", {
 		}
 		for _, obj in ipairs(obj_list) do
 			local ent = obj:get_luaentity()
-			if ent and (ent.name == "petz:parrot" or ent.name == "petz:toucan") then
+			if ent and (ent.name == "hades_petz:parrot" or ent.name == "hades_petz:toucan") then
 				bird_in_stand = true
 				local rotation = obj:get_rotation()
 				local bird_pos = obj:get_pos()
 				local z_offset
-				if ent.name == "petz:parrot" then
+				if ent.name == "hades_petz:parrot" then
 					z_offset = 0.125
 				else
 					z_offset  = -0.125
@@ -306,7 +310,7 @@ minetest.register_node("petz:bird_stand", {
 					obj:set_pos({x= bird_pos.x, y=bird_pos.y, z=bird_pos.z+z_offset })
 				else
 					obj:set_rotation({x=0, y=0, z=0})
-					if ent.name == "petz:parrot" then
+					if ent.name == "hades_petz:parrot" then
 						obj:set_pos(pos_parrot)
 					else
 						obj:set_pos(pos_toucan)
@@ -315,13 +319,13 @@ minetest.register_node("petz:bird_stand", {
 			end
 		end
 		local itemstack_name = itemstack:get_name()
-		if itemstack_name == "petz:parrot_set" or itemstack_name == "petz:toucan_set" then
+		if itemstack_name == "hades_petz:parrot_set" or itemstack_name == "hades_petz:toucan_set" then
 			if bird_in_stand == true then
 				minetest.chat_send_player(player_name, S("There's already a bird on top."))
 				return
 			end
 			if not minetest.is_protected(pos, player_name) then
-				if itemstack_name == "petz:parrot_set" then
+				if itemstack_name == "hades_petz:parrot_set" then
 					pos = pos_parrot
 				else --toucan
 					pos = pos_toucan
@@ -336,7 +340,7 @@ minetest.register_node("petz:bird_stand", {
 
 minetest.register_craft({
     type = "shaped",
-    output = 'petz:bird_stand',
+    output = 'hades_petz:bird_stand',
     recipe = {
         {'default:stick', 'group:feather', 'default:stick'},
         {'', 'default:stick', ''},
@@ -345,18 +349,18 @@ minetest.register_craft({
 })
 
 --Beehive
-minetest.register_node("petz:beehive", {
+minetest.register_node("hades_petz:beehive", {
 	description = S("Beehive"),
 	tiles = {"petz_beehive.png"},
 	is_ground_content = false,
 	groups = {snappy = 2, choppy = 2, oddly_breakable_by_hand = 3,
 		flammable = 3, wool = 1},
-	sounds = default.node_sound_defaults(),
+	sounds = hades_sounds.node_sound_defaults(),
 	drop = {},
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		local	drops = {
-			{name = "petz:honeycomb", chance = 1, min = 1, max= 6},
+			{name = "hades_petz:honeycomb", chance = 1, min = 1, max= 6},
 		}
 		meta:set_string("drops", minetest.serialize(drops))
 		local timer = minetest.get_node_timer(pos)
@@ -377,7 +381,7 @@ minetest.register_node("petz:beehive", {
 			bee_count = 0
 			minetest.after(petz.settings.worker_bee_delay, function()
 				local node =minetest.get_node_or_nil(pos)
-				if not(node and node.name == "petz:beehive") then
+				if not(node and node.name == "hades_petz:beehive") then
 					return
 				end
 				meta = minetest.get_meta(pos)
@@ -402,7 +406,7 @@ minetest.register_node("petz:beehive", {
 		petz.set_infotext_behive(meta, honey_count, bee_count)
 	end,
 	on_destruct = function(pos)
-		minetest.add_entity(pos, "petz:queen_bee")
+		minetest.add_entity(pos, "hades_petz:queen_bee")
 		mokapi.node_drop_items(pos)
 	end,
 	on_timer = function(pos)
@@ -435,7 +439,7 @@ minetest.register_node("petz:beehive", {
 			if math.random(1, bee_outing_ratio) == 1 then --opportunitty to go out
 				local spawn_bee_pos = petz.spawn_bee_pos(pos)
 				if spawn_bee_pos then
-					local bee = minetest.add_entity(spawn_bee_pos, "petz:bee")
+					local bee = minetest.add_entity(spawn_bee_pos, "hades_petz:bee")
 					local bee_entity = bee:get_luaentity()
 					bee_entity.behive = mobkit.remember(bee_entity, "behive", pos)
 					bee_count = bee_count - 1
@@ -454,10 +458,10 @@ minetest.register_node("petz:beehive", {
 		if wielded_item_name == "vessels:glass_bottle" then
 			if honey_count > 0 then
 				local inv = player:get_inventory()
-				if inv:room_for_item("main", "petz:honey_bottle") then
+				if inv:room_for_item("main", "hades_petz:honey_bottle") then
 					local itemstack_name = itemstack:get_name()
-					local stack = ItemStack("petz:honey_bottle 1")
-					if (itemstack_name == "petz:honey_bottle" or itemstack_name == "") and (itemstack:get_count() < itemstack:get_stack_max()) then
+					local stack = ItemStack("hades_petz:honey_bottle 1")
+					if (itemstack_name == "hades_petz:honey_bottle" or itemstack_name == "") and (itemstack:get_count() < itemstack:get_stack_max()) then
 						itemstack:add_item(stack)
 					else
 						inv:add_item("main", stack)
@@ -473,7 +477,7 @@ minetest.register_node("petz:beehive", {
 			else
 				minetest.chat_send_player(player_name, S("No honey in the behive."))
 			end
-		elseif wielded_item_name == "petz:bee_set" then
+		elseif wielded_item_name == "hades_petz:bee_set" then
 			local total_bees = meta:get_int("total_bees") or petz.settings.max_bees_behive
 			if total_bees < petz.settings.max_bees_behive then
 				bee_count = bee_count + 1
@@ -492,33 +496,33 @@ minetest.register_node("petz:beehive", {
 
 minetest.register_craft({
 	type = "shaped",
-	output = "petz:beehive",
+	output = "hades_petz:beehive",
 	recipe = {
-		{"petz:honeycomb", "petz:honeycomb", "petz:honeycomb"},
-		{"petz:honeycomb", "petz:queen_bee_set", "petz:honeycomb"},
-		{"petz:honeycomb", "petz:honeycomb", "petz:honeycomb"},
+		{"hades_petz:honeycomb", "hades_petz:honeycomb", "hades_petz:honeycomb"},
+		{"hades_petz:honeycomb", "hades_petz:queen_bee_set", "hades_petz:honeycomb"},
+		{"hades_petz:honeycomb", "hades_petz:honeycomb", "hades_petz:honeycomb"},
 	}
 })
 
 --Halloween Update
 
 if minetest.get_modpath("farming") ~= nil and farming.mod == "redo" then
-	minetest.register_alias("petz:jack_o_lantern", "farming:jackolantern")
+	minetest.register_alias("hades_petz:jack_o_lantern", "farming:jackolantern")
 	minetest.register_craft({
 		type = "shapeless",
-		output = "petz:jack_o_lantern",
-		recipe = {"farming:pumpkin", "petz:beeswax_candle"},
+		output = "hades_petz:jack_o_lantern",
+		recipe = {"farming:pumpkin", "hades_petz:beeswax_candle"},
 	})
 	minetest.register_craft({
 		type = "shapeless",
-		output = "petz:jack_o_lantern",
+		output = "hades_petz:jack_o_lantern",
 		recipe = {"farming:pumpkin", "default:torch"},
 	})
 else
-   minetest.register_node("petz:jack_o_lantern", {
+   minetest.register_node("hades_petz:jack_o_lantern", {
 	description = S("Jack-o'-lantern"),
 	groups = { snappy=3, flammable=3, oddly_breakable_by_hand=2 },
-	sounds = default.node_sound_wood_defaults({
+	sounds = hades_sounds.node_sound_wood_defaults({
 		dig = { name = "default_dig_oddly_breakable_by_hand" },
 		dug = { name = "default_dig_choppy" }
 	}),
@@ -537,23 +541,23 @@ end
 if minetest.get_modpath("crops") ~= nil then
 	minetest.register_craft({
 		type = "shapeless",
-		output = "petz:jack_o_lantern",
-		recipe = {"crops:pumpkin", "petz:beeswax_candle"},
+		output = "hades_petz:jack_o_lantern",
+		recipe = {"crops:pumpkin", "hades_petz:beeswax_candle"},
 	})
 	minetest.register_craft({
 		type = "shapeless",
-		output = "petz:jack_o_lantern",
+		output = "hades_petz:jack_o_lantern",
 		recipe = {"crops:pumpkin", "default:torch"},
 	})
 end
 
 --Poop
-minetest.register_node("petz:poop", {
+minetest.register_node("hades_petz:poop", {
     description = S("Poop"),
     inventory_image = "petz_poop_inv.png",
     tiles = {"petz_poop.png"},
     groups = {crumbly=3, falling_node=1},
-    sounds = default.node_sound_stone_defaults(),
+    sounds = hades_sounds.node_sound_stone_defaults(),
     paramtype = "light",
 	walkable = false,
 	falling_node = true,
@@ -576,30 +580,30 @@ minetest.register_node("petz:poop", {
 	end,
 })
 
-minetest.register_node("petz:poop_block", {
+minetest.register_node("hades_petz:poop_block", {
 	description = S("Poop Block"),
 	drawtype = "allfaces_optional",
 	tiles = {"petz_poop.png"},
 	paramtype = "light",
 	is_ground_content = false,
 	groups = {snappy = 3, flammable = 3, leaves = 1},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 })
 
 minetest.register_craft({
 	type = "shaped",
-	output = "petz:poop_block",
+	output = "hades_petz:poop_block",
     recipe = {
-        {'petz:poop', 'petz:poop', 'petz:poop'},
-        {'petz:poop', 'petz:poop', 'petz:poop'},
-        {'petz:poop', 'petz:poop', 'petz:poop'},
+        {'hades_petz:poop', 'hades_petz:poop', 'hades_petz:poop'},
+        {'hades_petz:poop', 'hades_petz:poop', 'hades_petz:poop'},
+        {'hades_petz:poop', 'hades_petz:poop', 'hades_petz:poop'},
     }
 })
 
 --Cat Basket
-minetest.register_node("petz:cat_basket", {
+minetest.register_node("hades_petz:cat_basket", {
     description = S("Cat Basket"),
-    sounds = default.node_sound_wood_defaults(),
+    sounds = hades_sounds.node_sound_wood_defaults(),
 	tiles = {
 		"petz_cat_basket_top.png",
 		"petz_cat_basket_bottom.png",
@@ -639,7 +643,7 @@ minetest.register_node("petz:cat_basket", {
 		}
 		for _, obj in ipairs(obj_list) do
 			local ent = obj:get_luaentity()
-			if ent and (ent.name == "petz:kitty") then
+			if ent and (ent.name == "hades_petz:kitty") then
 				cat_in_basket = true
 				local rotation = obj:get_rotation()
 				local kitty_pos = obj:get_pos()
@@ -653,7 +657,7 @@ minetest.register_node("petz:cat_basket", {
 			end
 		end
 		local itemstack_name = itemstack:get_name()
-		if itemstack_name == "petz:kitty_set" then
+		if itemstack_name == "hades_petz:kitty_set" then
 			if cat_in_basket == true then
 				minetest.chat_send_player(player_name, S("There's already a kitty in the basket."))
 				return
@@ -671,7 +675,7 @@ minetest.register_node("petz:cat_basket", {
 
 minetest.register_craft({
     type = "shaped",
-    output = 'petz:cat_basket',
+    output = 'hades_petz:cat_basket',
     recipe = {
         {'', '', ''},
         {'group:wood', 'wool:white', 'group:wood'},
@@ -679,7 +683,7 @@ minetest.register_craft({
     }
 })
 
-minetest.register_node("petz:butterfly_showcase", {
+minetest.register_node("hades_petz:butterfly_showcase", {
 	description = S("Butterfly Showcase"),
 	drawtype = "nodebox",
 	walkable = true,
@@ -695,20 +699,20 @@ minetest.register_node("petz:butterfly_showcase", {
 	groups = {
 		snappy = 2, flammable = 3, oddly_breakable_by_hand = 3, choppy = 2, carpet = 1, leafdecay = 3, leaves = 1
 	},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 })
 
 minetest.register_craft({
 	type = "shaped",
-	output = "petz:butterfly_showcase",
+	output = "hades_petz:butterfly_showcase",
 	recipe = {
-		{"group:wood", "petz:butterfly_set", "group:wood"},
-		{"petz:butterfly_set", "xpanes:pane_flat", "petz:butterfly_set"},
-		{"group:wood", "petz:butterfly_set", "group:wood"},
+		{"group:wood", "hades_petz:butterfly_set", "group:wood"},
+		{"hades_petz:butterfly_set", "xpanes:pane_flat", "hades_petz:butterfly_set"},
+		{"group:wood", "hades_petz:butterfly_set", "group:wood"},
 	}
 })
 
-minetest.register_node("petz:honey_block", {
+minetest.register_node("hades_petz:honey_block", {
 	description = S("Honey Block"),
 	drawtype = "nodebox",
 	node_box = {
@@ -726,23 +730,23 @@ minetest.register_node("petz:honey_block", {
 	param2 = 50,
 	sunlight_propagates = true,
 	use_texture_alpha = "blend",
-	light_source = default.LIGHT_MAX - 1,
-	sounds = default.node_sound_glass_defaults(),
+	light_source = minetest.LIGHT_MAX - 1,
+	sounds = hades_sounds.node_sound_glass_defaults(),
 })
 
 --Ant Nodes
 
-minetest.register_node("petz:antbed", {
+minetest.register_node("hades_petz:antbed", {
     description = S("Ant-bed"),
     tiles = {"petz_antbed.png"},
     is_ground_content = false,
 	groups = {crumbly = 3},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 })
 
 minetest.register_craft({
 	type = "shaped",
-	output = "petz:antbed",
+	output = "hades_petz:antbed",
 	recipe = {
 		{"farming:wheat", "group:leaves", "farming:wheat"},
 		{"farming:cotton", "farming:seed_wheat", "farming:cotton"},
@@ -750,12 +754,12 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_node("petz:anthill_entrance", {
+minetest.register_node("hades_petz:anthill_entrance", {
     description = S("Anthill Entrance"),
     tiles = {"petz_anthill_entrance.png", "petz_anthill_entrance.png", "petz_antbed.png"},
     is_ground_content = false,
 	groups = {crumbly = 3},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 
 	on_construct = function(pos)
 		local timer = minetest.get_node_timer(pos)
@@ -772,10 +776,10 @@ minetest.register_node("petz:anthill_entrance", {
 		if node and minetest.registered_nodes[node.name] and node.name == "air" then
 			local chance_worker = math.random(1, 240) --once a day a worker ant arises
 			if chance_worker == 1 then
-				if not minetest.registered_entities["petz:ant"] then
+				if not minetest.registered_entities["hades_petz:ant"] then
 					return true
 				end
-				minetest.add_entity(pos_top, "petz:ant")
+				minetest.add_entity(pos_top, "hades_petz:ant")
 			end
 			--Check if player near (on a radius of 7) to spawn a warrior ant to defend the anthill
 			local nearby_objects = minetest.get_objects_inside_radius(pos, 7)
@@ -788,17 +792,17 @@ minetest.register_node("petz:anthill_entrance", {
 				end
 			end
 			if player_near then
-				if not minetest.registered_entities["petz:warrior_ant"] then
+				if not minetest.registered_entities["hades_petz:warrior_ant"] then
 					return true
 				end
-				minetest.add_entity(pos_top, "petz:warrior_ant")
+				minetest.add_entity(pos_top, "hades_petz:warrior_ant")
 			end
 		end
 		return true --always do the check again
 	end
 })
 
-minetest.register_node("petz:antegg", {
+minetest.register_node("hades_petz:antegg", {
 	description = S("Ant Egg"),
 	drawtype = "nodebox",
 	node_box = {
@@ -815,8 +819,8 @@ minetest.register_node("petz:antegg", {
 	param2 = 50,
 	sunlight_propagates = true,
 	use_texture_alpha = "blend",
-	light_source = default.LIGHT_MAX - 10,
-	sounds = default.node_sound_leaves_defaults(),
+	light_source = minetest.LIGHT_MAX - 10,
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 
 	on_construct = function(pos)
 		local timer = minetest.get_node_timer(pos)
@@ -828,11 +832,11 @@ minetest.register_node("petz:antegg", {
 		local entity
 		local chance = math.random(1, 100) --for the type of ant
 		if chance >= 20 then
-			entity ="petz:ant"
+			entity ="hades_petz:ant"
 		elseif chance >= 4 and chance < 20 then
-			entity ="petz:warrior_ant"
+			entity ="hades_petz:warrior_ant"
 		else
-			entity ="petz:queen_ant"
+			entity ="hades_petz:queen_ant"
 		end
 		if not minetest.registered_entities[entity] then
 			return true
@@ -843,12 +847,12 @@ minetest.register_node("petz:antegg", {
 	end
 })
 
-minetest.register_node("petz:grain_packet", {
+minetest.register_node("hades_petz:grain_packet", {
     description = S("Grain Packet"),
     tiles = {"petz_grain_packet.png"},
     is_ground_content = false,
 	groups = {snappy = 3, flammable = 2},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	drop = {
 		max_items = 15,
 		items = {
@@ -885,7 +889,7 @@ minetest.register_node("petz:grain_packet", {
 
 minetest.register_craft({
 	type = "shapeless",
-	output = "petz:grain_packet",
+	output = "hades_petz:grain_packet",
 	recipe = {
 		"farming:seed_wheat", "farming:seed_wheat", "farming:seed_wheat",
 		"farming:seed_wheat", "farming:seed_wheat", "farming:seed_wheat",

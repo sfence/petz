@@ -13,7 +13,7 @@ petz.on_die = function(self)
 		petz.free_saddles(self)
 		 --Drop horseshoes-->
 		if self.horseshoes and self.horseshoes > 0 then
-			mokapi.drop_item(self, ItemStack("petz:horseshoe".." "..tostring(self.horseshoes)))
+			mokapi.drop_item(self, ItemStack("hades_petz:horseshoe".." "..tostring(self.horseshoes)))
 		end
 		--If mounted, force unmount-->
 		if self.driver then
@@ -48,7 +48,7 @@ petz.on_die = function(self)
 	--Remove the owner entry for right_click formspec and close the formspec (it could be opened)-->
 	if petz.pet[self.owner] then
 		petz.pet[self.owner]= nil
-		minetest.close_formspec(self.owner, "petz:form_orders")
+		minetest.close_formspec(self.owner, "hades_petz:form_orders")
 	end
 	--Remove this petz from the list of the player pets-->
 	if self.tamed then

@@ -58,7 +58,7 @@ petz.spawn_mob = function(spawn_pos, limit_max_mobs, abr, liquidflag)
 		local pet_name
 		local can_spawn = true
 		pet_name = petz.settings["petz_list"][i]
-		local mob_ent_name = "petz:"..pet_name
+		local mob_ent_name = "hades_petz:"..pet_name
 		--minetest.chat_send_player("singleplayer", mob_ent_name)
 		local ent = minetest.registered_entities[mob_ent_name]
 		-- Note: using a function that just returns false on the first condition that is not met
@@ -131,7 +131,7 @@ petz.spawn_mob = function(spawn_pos, limit_max_mobs, abr, liquidflag)
 	end
 
 	local random_mob = candidates_list[math.random(1, #candidates_list)] --Get a random mob from the list of candidates
-	local random_mob_name = "petz:" .. random_mob
+	local random_mob_name = "hades_petz:" .. random_mob
 	--minetest.chat_send_player("singleplayer", random_mob)
 	local spawn_chance = petz.settings[random_mob.."_spawn_chance"]
 	if spawn_chance < 0 then
@@ -221,6 +221,8 @@ petz.spawn_mob = function(spawn_pos, limit_max_mobs, abr, liquidflag)
 	end
 end
 
+--[[
+-- disabled for hades revisited, dna should be used
 minetest.register_globalstep(function(dtime)
 	local abr = tonumber(minetest.get_mapgen_setting('active_block_range')) or 3
 	local radius =  abr * 16 --recommended
@@ -230,6 +232,7 @@ minetest.register_globalstep(function(dtime)
 		petz.spawn_mob(spawn_pos, true, abr, liquidflag)
 	end
 end)
+--]]
 
 -- Spawn some mobs when area loaded
 --minetest.register_on_generated(function(minp, maxp, seed)

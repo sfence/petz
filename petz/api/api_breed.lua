@@ -18,8 +18,8 @@ petz.breed = function(self, clicker, wielded_item, wielded_item_name)
 end
 
 petz.pony_breed = function(self, clicker, wielded_item, wielded_item_name)
-	if wielded_item_name == "petz:glass_syringe" and self.is_male then
-		local new_wielded_item = ItemStack("petz:glass_syringe_sperm")
+	if wielded_item_name == "hades_petz:glass_syringe" and self.is_male then
+		local new_wielded_item = ItemStack("hades_petz:glass_syringe_sperm")
 		local meta = new_wielded_item:get_meta()
 		local speedup = (self.horseshoes or 0) * petz.settings.horseshoe_speedup
 		meta:set_string("petz_type", self.type)
@@ -38,7 +38,7 @@ petz.pony_breed = function(self, clicker, wielded_item, wielded_item_name)
 		else
 			clicker:set_wielded_item(new_wielded_item)
 		end
-	elseif wielded_item_name == "petz:glass_syringe_sperm" and not(self.is_male) then
+	elseif wielded_item_name == "hades_petz:glass_syringe_sperm" and not(self.is_male) then
 		local meta = wielded_item:get_meta()
 		local petz_type = meta:get_string("petz_type")
 		if not(self.is_pregnant) and self.pregnant_count > 0 and self.type == petz_type then
@@ -54,7 +54,7 @@ petz.pony_breed = function(self, clicker, wielded_item, wielded_item_name)
 			father_veloc_stats["accel"] = accel
 			self.father_veloc_stats = mobkit.remember(self, "father_veloc_stats", father_veloc_stats)
 			petz.do_particles_effect(self.object, self.object:get_pos(), "pregnant".."_"..self.type)
-			clicker:set_wielded_item("petz:glass_syringe")
+			clicker:set_wielded_item("hades_petz:glass_syringe")
 		end
 	end
 end
@@ -79,10 +79,10 @@ petz.childbirth = function(self)
 		baby_properties["gen1_mother"] = math.random(1, #self.skin_colors-1)
 		baby_properties["gen2_mother"] = math.random(1, #self.skin_colors-1)
 	end
-	local baby_type = "petz:"..self.type
+	local baby_type = "hades_petz:"..self.type
 	if self.type == "elephant" then -- female elephants have "elephant" as type
 		if math.random(1, 2) == 1 then
-			baby_type = "petz:elephant_female" --could be a female baby elephant
+			baby_type = "hades_petz:elephant_female" --could be a female baby elephant
 		end
 	end
 	pos.y = pos.y + 1.01 -- birth a litte up

@@ -3,7 +3,7 @@ local S = ...
 local scale_model = 3.3
 local visual_size = {x=petz.settings.visual_size.x*scale_model, y=petz.settings.visual_size.y*scale_model}
 
-minetest.register_entity("petz:wagon",{
+minetest.register_entity("hades_petz:wagon",{
 	hp = 10,
 	visual = 'mesh',
 	visual_size = visual_size,
@@ -15,7 +15,7 @@ minetest.register_entity("petz:wagon",{
 	hitbox = {-0.5, -1.5, -1.5, 0.5, -0.25, -3.0},
 	on_punch = function(self, puncher, time_from_last_punch, tool_capabilities, dir, damage)
 		if self.object:get_hp() - damage <= 0 then
-			mokapi.drop_item(self, ItemStack("petz:wagon 1"))
+			mokapi.drop_item(self, ItemStack("hades_petz:wagon 1"))
 		end
 	end,
 })
@@ -30,7 +30,7 @@ petz.animate_wagon = function(self, ani_type)
 	end
 end
 
-minetest.register_craftitem("petz:wagon", {
+minetest.register_craftitem("hades_petz:wagon", {
 	description = S("One-Pony Open Wagon"),
 	inventory_image = "petz_wagon_inv.png",
 	groups = {wagon = 1},
@@ -45,7 +45,7 @@ minetest.register_craftitem("petz:wagon", {
 			y = pt_above.y+1,
 			z = pt_above.z,
 		}
-		minetest.add_entity(pos2, "petz:wagon", nil)
+		minetest.add_entity(pos2, "hades_petz:wagon", nil)
 		itemstack:take_item()
 		return itemstack
 	end,
@@ -53,15 +53,15 @@ minetest.register_craftitem("petz:wagon", {
 
 minetest.register_craft({
 	type = "shaped",
-	output = "petz:wagon",
+	output = "hades_petz:wagon",
 	recipe = {
 		{"", "group:stair", ""},
 		{"group:wood", "group:wood", "group:wood"},
-		{"petz:wagon_wheel", "", "petz:wagon_wheel"},
+		{"hades_petz:wagon_wheel", "", "hades_petz:wagon_wheel"},
 	}
 })
 
-minetest.register_craftitem("petz:wagon_wheel", { -- register new spawn egg containing mob information
+minetest.register_craftitem("hades_petz:wagon_wheel", { -- register new spawn egg containing mob information
 	description = S("Wagon Wheel"),
 	inventory_image = "petz_wagon_wheel.png",
 	groups = {wagon = 1, wheel = 1},
@@ -69,7 +69,7 @@ minetest.register_craftitem("petz:wagon_wheel", { -- register new spawn egg cont
 
 minetest.register_craft({
 	type = "shaped",
-	output = "petz:wagon_wheel",
+	output = "hades_petz:wagon_wheel",
 	recipe = {
 		{"group:wood", "group:wood", "group:wood"},
 		{"group:wood", "default:iron_lump", "group:wood"},

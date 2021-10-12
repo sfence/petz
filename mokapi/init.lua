@@ -1,5 +1,5 @@
 mokapi = {} --the global variable
-local modname = "mokapi" --the modname
+local modname = minetest.get_current_modname() --the modname
 local modpath = minetest.get_modpath(modname) --the modpath
 --load the apis:
 assert(loadfile(modpath.."/api/api_consts.lua"))()

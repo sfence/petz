@@ -54,7 +54,7 @@ function petz.attach(entity, player)
 	entity.driver = player --this goes after petz.force_detach!
 	local player_name = player:get_player_name()
 	petz.mount_attached[player_name] = entity
-	player_api.player_attached[player_name] = true
+	hades_player.player_attached[player_name] = true
 	player:set_eye_offset(eye_offset, {x = 0, y = 0, z = 0})
 	player:set_properties({
 		visual_size = {
@@ -64,7 +64,7 @@ function petz.attach(entity, player)
 		pointable = petz.settings.pointable_driver
 	})
 	minetest.after(0.3, function()
-		player_api.set_animation(player, "sit" , 30)
+		hades_player.set_animation(player, "sit" , 30)
 	end)
 	player:set_look_horizontal(entity.object:get_yaw() - rot_view)
 end
@@ -83,7 +83,7 @@ petz.force_detach = function(player)
 		mobkit.animate(entity, "still")
 	end
 	player:set_detach()
-	player_api.player_attached[player:get_player_name()] = false
+	hades_player.player_attached[player:get_player_name()] = false
 	player:set_eye_offset({x = 0, y = 0, z = 0}, {x = 0, y = 0, z = 0})
 	minetest.after(0.25, function() --to avoid tiny player
 		if player then
@@ -92,7 +92,7 @@ petz.force_detach = function(player)
 				pointable = true
 			})
 		end
-		player_api.set_animation(player, "stand" , 30)
+		hades_player.set_animation(player, "stand" , 30)
 	end, player)
 end
 

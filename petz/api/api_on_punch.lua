@@ -120,13 +120,13 @@ function petz.on_punch(self, puncher, time_from_last_punch, tool_capabilities, d
 				petz.bh_teleport(self, pos, puncher, puncher:get_pos())
 			else
 				mokapi.make_sound("object", self.object, "petz_fireball", petz.settings.max_hear_distance)
-				petz.spawn_throw_object(self.object, 20, "petz:ent_jack_o_lantern_grenade")
+				petz.spawn_throw_object(self.object, 20, "hades_petz:ent_jack_o_lantern_grenade")
 			end
 		end
 	elseif self.type == "tarantula" then
 		if math.random(1, 5) == 1 then
 			--petz.lookat(self, puncher:get_pos())
-			petz.spawn_throw_object(self.object, 20, "petz:ent_cobweb")
+			petz.spawn_throw_object(self.object, 20, "hades_petz:ent_cobweb")
 		end
 	end
 end

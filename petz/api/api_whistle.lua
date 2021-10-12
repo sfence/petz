@@ -2,23 +2,23 @@ local S = ...
 
 -- Whistle Item
 
-minetest.register_craftitem("petz:whistle", {
+minetest.register_craftitem("hades_petz:whistle", {
 	description = S("Pet Whistle"),
 	inventory_image = "petz_whistle.png",
 	groups = {},
 	on_use = function (itemstack, user, pointed_thing)
 		local user_name = user:get_player_name()
 		local user_pos = user:get_pos()
-        minetest.show_formspec(user_name, "petz:form_whistle", petz.create_form_list_by_owner(user_name, user_pos))
+        minetest.show_formspec(user_name, "hades_petz:form_whistle", petz.create_form_list_by_owner(user_name, user_pos))
     end,
 })
 
 minetest.register_craft({
     type = "shaped",
-    output = 'petz:whistle',
+    output = 'hades_petz:whistle',
     recipe = {
         {'', '', ''},
-        {'', 'petz:ducky_feather', ''},
+        {'', 'hades_petz:ducky_feather', ''},
         {'', 'default:steel_ingot', ''},
     }
 })
@@ -66,7 +66,7 @@ end
 
 --On receive fields
 minetest.register_on_player_receive_fields(function(player, formname, fields)
-	if formname ~= "petz:form_whistle" then
+	if formname ~= "hades_petz:form_whistle" then
 		return false
 	end
 	if fields.petz_list then
@@ -87,7 +87,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 				z = pos_front_player.z,
 			}
 			pet.object:set_pos(pet_pos)
-			minetest.close_formspec(player_name, "petz:form_whistle")
+			minetest.close_formspec(player_name, "hades_petz:form_whistle")
 			mokapi.make_sound("player", player, "petz_whistle", petz.settings.max_hear_distance)
 		end
 	end

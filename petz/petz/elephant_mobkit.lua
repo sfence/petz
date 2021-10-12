@@ -36,7 +36,7 @@ for i=1, 2 do
 	local p2 = {x= 0.1875, y = -0.0625, z = 0.25}
 	local collisionbox, collisionbox_baby = petz.get_collisionbox(p1, p2, scale_model, scale_baby)
 	local visual_size_baby = {x=petz.settings.visual_size.x*scale_model*scale_baby, y=petz.settings.visual_size.y*scale_model*scale_baby}
-	minetest.register_entity("petz:"..pet_name,{
+	minetest.register_entity("hades_petz:"..pet_name,{
 		--Petz specifics
 		type = "elephant",
 		is_male = is_male,
@@ -53,8 +53,8 @@ for i=1, 2 do
 		capture_item = "lasso",
 		follow = petz.settings.elephant_follow,
 		drops = {
-			{name = "petz:elephant_tusk", chance = 1, min = 2, max = 2,},
-			{name = "petz:bone", chance = 3, min = 1, max = 2,},
+			{name = "hades_petz:elephant_tusk", chance = 1, min = 2, max = 2,},
+			{name = "hades_petz:bone", chance = 3, min = 1, max = 2,},
 		},
 		replace_rate = 10,
 		replace_offset = 0,
@@ -126,5 +126,5 @@ for i=1, 2 do
 			petz.on_step(self, dtime)
 		end,
 	})
-	petz:register_egg("petz:"..pet_name, S(description), "petz_spawnegg_"..pet_name..".png", true)
+	petz:register_egg("hades_petz:"..pet_name, S(description), "petz_spawnegg_"..pet_name..".png", true)
 end

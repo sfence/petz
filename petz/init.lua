@@ -3,11 +3,11 @@
 -- License:GPLv3
 --
 
-local modname = "petz"
+local modname = minetest.get_current_modname()
 local modpath = minetest.get_modpath(modname)
 
 -- internationalization boilerplate
-local S = minetest.get_translator(minetest.get_current_modname())
+local S = minetest.get_translator("petz")
 
 --
 --The Petz

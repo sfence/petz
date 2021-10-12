@@ -11,6 +11,6 @@ petz.poop = function(self, pos)
 	--minetest.chat_send_player("singleplayer", node_name)
 	if node_name == "air" and node_name_below ~= "air" then
 		pos.y = pos.y - 0.75
-		minetest.set_node(pos, {name = "petz:poop"})
+		minetest.set_node(pos, {name = "hades_petz:poop"})
 	end
 end

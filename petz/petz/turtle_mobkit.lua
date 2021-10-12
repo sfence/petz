@@ -12,7 +12,7 @@ local p1 = {x= -0.1875, y = -0.5, z = -0.1875}
 local p2 = {x= 0.1875, y = 0.01, z = 0.25}
 local collisionbox = petz.get_collisionbox(p1, p2, scale_model, nil)
 
-minetest.register_entity("petz:"..pet_name,{
+minetest.register_entity("hades_petz:"..pet_name,{
 	--Petz specifics
 	type = "turtle",
 	is_pet = false,
@@ -24,7 +24,7 @@ minetest.register_entity("petz:"..pet_name,{
 	capture_item = "net",
 	follow = petz.settings.turtle_follow,
 	drops = {
-		{name = "petz:turtle_shell", chance = 3, min = 1, max = 1,},
+		{name = "hades_petz:turtle_shell", chance = 3, min = 1, max = 1,},
 	},
 	rotate = petz.settings.rotate,
 	physical = true,
@@ -82,4 +82,4 @@ minetest.register_entity("petz:"..pet_name,{
 
 })
 
-petz:register_egg("petz:turtle", S("Turtle"), "petz_spawnegg_turtle.png", true)
+petz:register_egg("hades_petz:turtle", S("Turtle"), "petz_spawnegg_turtle.png", true)

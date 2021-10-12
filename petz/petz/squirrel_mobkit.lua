@@ -11,7 +11,7 @@ local p1 = {x= -0.1875, y = -0.375, z = -0.125}
 local p2 = {x= 0.125, y = -0.0, z = 0.375}
 local collisionbox = petz.get_collisionbox(p1, p2, scale_model, nil)
 
-minetest.register_entity("petz:"..pet_name,{
+minetest.register_entity("hades_petz:"..pet_name,{
 	--Petz specifics
 	type = "squirrel",
 	init_tamagochi_timer = true,
@@ -85,4 +85,4 @@ minetest.register_entity("petz:"..pet_name,{
 	end,
 })
 
-petz:register_egg("petz:squirrel", S("Squirrel"), "petz_spawnegg_squirrel.png", true)
+petz:register_egg("hades_petz:squirrel", S("Squirrel"), "petz_spawnegg_squirrel.png", true)

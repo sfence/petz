@@ -4,7 +4,7 @@
 
 function petz.bh_breed(self, pos)
 	if self.breed and self.is_rut and self.is_male then --search a couple for a male!
-		local couple_name = "petz:"..self.type
+		local couple_name = "hades_petz:"..self.type
 		if self.type ==  "elephant" then
 			couple_name = couple_name.."_female"
 		end

@@ -6,24 +6,24 @@ local S = ...
 
 -- Dreamcatcher
 
-minetest.register_craftitem("petz:dreamcatcher", {
+minetest.register_craftitem("hades_petz:dreamcatcher", {
 	description = S("Pet Dreamcatcher"),
 	inventory_image = "petz_dreamcatcher.png",
 	groups = {},
 	on_use = function (itemstack, user, pointed_thing)
 		local user_name = user:get_player_name()
 		local user_pos = user:get_pos()
-		minetest.show_formspec(user_name, "petz:form_dreamcatcher", petz.create_form_list_by_owner_dreamcatcher(user_name, user_pos))
+		minetest.show_formspec(user_name, "hades_petz:form_dreamcatcher", petz.create_form_list_by_owner_dreamcatcher(user_name, user_pos))
 	end,
 })
 
 minetest.register_craft({
 	type = "shaped",
-	output = "petz:dreamcatcher",
+	output = "hades_petz:dreamcatcher",
 	recipe = {
 		{"", "group:wood", ""},
 		{"farming:string", "farming:string", "farming:string"},
-		{"petz:ducky_feather", "petz:ducky_feather", "petz:ducky_feather"},
+		{"hades_petz:ducky_feather", "hades_petz:ducky_feather", "hades_petz:ducky_feather"},
 	}
 })
 
@@ -42,7 +42,7 @@ end
 
 petz.drop_dreamcatcher = function(self)
 	if self.dreamcatcher then --drop the dreamcatcher
-		minetest.add_item(self.object:get_pos(), "petz:dreamcatcher")
+		minetest.add_item(self.object:get_pos(), "hades_petz:dreamcatcher")
 		mokapi.make_sound("object", self.object, "petz_pop_sound", petz.settings.max_hear_distance)
 		self.dreamcatcher = false
 		mobkit.remember(self, "dreamcatcher", self.dreamcatcher)

@@ -11,7 +11,7 @@ local p1 = {x= -0.125, y = -0.5, z = -0.1875}
 local p2 = {x= 0.1875, y = 0.1875, z = 0.375}
 local collisionbox = petz.get_collisionbox(p1, p2, scale_model, nil)
 
-minetest.register_entity("petz:"..pet_name,{
+minetest.register_entity("hades_petz:"..pet_name,{
 	--Petz specifics
 	type = "tropicalfish",
 	can_swin = true,
@@ -81,9 +81,9 @@ minetest.register_entity("petz:"..pet_name,{
 	end,
 })
 
-petz:register_egg("petz:tropicalfish", S("Tropicalfish"), "petz_spawnegg_tropicalfish.png", true)
+petz:register_egg("hades_petz:tropicalfish", S("Tropicalfish"), "petz_spawnegg_tropicalfish.png", true)
 
-minetest.register_entity("petz:tropicalfish_entity_sprite", {
+minetest.register_entity("hades_petz:tropicalfish_entity_sprite", {
 	visual = "sprite",
 	spritediv = {x = 1, y = 16},
 	initial_sprite_basepos = {x = 0, y = 0},
@@ -94,7 +94,7 @@ minetest.register_entity("petz:tropicalfish_entity_sprite", {
 	groups = {fishtank = 1},
 	on_activate = function(self, staticdata)
 		local pos = self.object:getpos()
-		if minetest.get_node(pos).name ~= "petz:fishtank" then
+		if minetest.get_node(pos).name ~= "hades_petz:fishtank" then
 			mokapi.remove_mob(self)
 		end
 	end,

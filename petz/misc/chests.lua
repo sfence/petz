@@ -37,7 +37,7 @@ function petz.chest.chest_lid_close(pn)
 	end
 
 	local node = minetest.get_node(pos)
-	minetest.after(0.2, minetest.swap_node, pos, { name = "petz:" .. swap,
+	minetest.after(0.2, minetest.swap_node, pos, { name = "hades_petz:" .. swap,
 			param2 = node.param2 })
 	minetest.sound_play(sound, {gain = 0.3, pos = pos, max_hear_distance = 10})
 end
@@ -50,7 +50,7 @@ minetest.register_on_leaveplayer(function(player)
 end)
 
 minetest.register_on_player_receive_fields(function(player, formname, fields)
-	if formname ~= "petz:chest" then
+	if formname ~= "hades_petz:chest" then
 		return
 	end
 	if not player or not fields.quit then
@@ -73,7 +73,7 @@ minetest.register_on_leaveplayer(function(player)
 end)
 
 minetest.register_on_player_receive_fields(function(player, formname, fields)
-	if formname ~= "petz:present_msg" then
+	if formname ~= "hades_petz:present_msg" then
 		return
 	end
 	if not player or not fields.quit then
@@ -115,7 +115,7 @@ function petz.register_chest(name, d)
 				"field[1,2;5,1;christmas_msg;"..S("Compose a message")..":;]"..
 				"button_exit[2,3;2,1;write;"..S("Write").."]"
 			petz.christmas_cards[player_name] = pos
-			minetest.show_formspec(placer:get_player_name(), "petz:present_msg", formspec)
+			minetest.show_formspec(placer:get_player_name(), "hades_petz:present_msg", formspec)
 		end
 	end
 	def.can_dig = function(pos,player)
@@ -128,18 +128,18 @@ function petz.register_chest(name, d)
 				max_hear_distance = 10})
 		if not default.chest.chest_lid_obstructed(pos) then
 			minetest.swap_node(pos, {
-					name = "petz:" .. name .. "_open",
+					name = "hades_petz:" .. name .. "_open",
 					param2 = node.param2 })
 		end
 		minetest.after(0.2, minetest.show_formspec,
 				clicker:get_player_name(),
-				"petz:chest", petz.chest.get_chest_formspec(pos))
+				"hades_petz:chest", petz.chest.get_chest_formspec(pos))
 		petz.chest.open_chests[clicker:get_player_name()] = { pos = pos, sound = def.sound_close, swap = name }
 	end
 	def.on_blast = function(pos)
 		local drops = {}
 		default.get_inventory_drops(pos, "main", drops)
-		drops[#drops+1] = "petz:" .. name
+		drops[#drops+1] = "hades_petz:" .. name
 		minetest.remove_node(pos)
 		return drops
 	end
@@ -171,7 +171,7 @@ function petz.register_chest(name, d)
 			def_opened.tiles[i].backface_culling = true
 		end
 	end
-	def_opened.drop = "petz:" .. name
+	def_opened.drop = "hades_petz:" .. name
 	def_opened.groups.not_in_creative_inventory = 1
 	def_opened.selection_box = {
 		type = "fixed",
@@ -188,8 +188,8 @@ function petz.register_chest(name, d)
 	def_closed.tiles[5] = def.tiles[3] -- drawtype to make them match the mesh
 	def_closed.tiles[3] = def.tiles[3].."^[transformFX"
 
-	minetest.register_node("petz:" .. name, def_closed)
-	minetest.register_node("petz:" .. name .. "_open", def_opened)
+	minetest.register_node("hades_petz:" .. name, def_closed)
+	minetest.register_node("hades_petz:" .. name .. "_open", def_opened)
 
 end
 
@@ -204,7 +204,7 @@ petz.register_chest("christmas_present", {
 		"petz_christmas_chest_inside.png"
 	},
 	stack_max = 1,
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 	sound_open = "default_chest_open",
 	sound_close = "default_chest_close",
 	groups = {choppy = 2, oddly_breakable_by_hand = 2},
@@ -212,7 +212,7 @@ petz.register_chest("christmas_present", {
 
 minetest.register_craft({
 	type = "shaped",
-	output = "petz:christmas_present",
+	output = "hades_petz:christmas_present",
 	recipe = {
 		{"default:paper", "default:paper", "default:paper"},
 		{"dye:red", "default:chest", "dye:yellow"},

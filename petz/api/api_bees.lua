@@ -16,7 +16,7 @@ petz.behive_exists = function(self)
 	local behive_exists
 	if self.behive then
 		local node = minetest.get_node_or_nil(self.behive)
-		if node and node.name == "petz:beehive" then
+		if node and node.name == "hades_petz:beehive" then
 			behive_exists = true
 		else
 			behive_exists = false

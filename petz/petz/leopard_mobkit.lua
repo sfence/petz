@@ -23,7 +23,7 @@ for i=1, 2 do
 		textures = {"petz_snow_leopard.png", "petz_snow_leopard2.png"}
 	end
 
-	minetest.register_entity("petz:"..type, {
+	minetest.register_entity("hades_petz:"..type, {
 		--Petz specifics
 		type = type,
 		init_tamagochi_timer = true,
@@ -36,8 +36,8 @@ for i=1, 2 do
 		capture_item = "lasso",
 		follow = petz.settings.leopard_follow,
 		drops = {
-			{name = "petz:bone", chance = 5, min = 1, max = 1,},
-			{name = "petz:leopard_skin", chance = 3, min = 1, max = 1,},
+			{name = "hades_petz:bone", chance = 5, min = 1, max = 1,},
+			{name = "hades_petz:leopard_skin", chance = 3, min = 1, max = 1,},
 		},
 		rotate = petz.settings.rotate,
 		physical = true,
@@ -102,6 +102,6 @@ for i=1, 2 do
 		end,
 
 	})
-	petz:register_egg("petz:"..type, S(description), "petz_spawnegg_"..type..".png", true)
+	petz:register_egg("hades_petz:"..type, S(description), "petz_spawnegg_"..type..".png", true)
 end
 

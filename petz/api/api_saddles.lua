@@ -1,7 +1,7 @@
 -- Saddlebag API functions
 
 local function free_saddlebag(self)
-	mokapi.drop_item(self, ItemStack("petz:saddlebag"))
+	mokapi.drop_item(self, ItemStack("hades_petz:saddlebag"))
 	--Drop the items from petz inventory
 	local inv = self.saddlebag_inventory
 	for key, value in pairs(inv) do
@@ -13,7 +13,7 @@ local function free_saddlebag(self)
 end
 
 local function free_saddle(self)
-	mokapi.drop_item(self, ItemStack("petz:saddle"))
+	mokapi.drop_item(self, ItemStack("hades_petz:saddle"))
 	self.saddle = mobkit.remember(self, "saddle", false)
 	mokapi.make_sound("object", self.object, "petz_pop_sound", petz.settings.max_hear_distance)
 end

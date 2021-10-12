@@ -18,7 +18,7 @@ local p1 = {x= -0.125, y = -0.5, z = -0.3125}
 local p2 = {x= 0.1875, y = 0.0625, z = 0.375}
 local collisionbox, collisionbox_baby = petz.get_collisionbox(p1, p2, scale_model, scale_baby)
 
-minetest.register_entity("petz:"..pet_name,{
+minetest.register_entity("hades_petz:"..pet_name,{
 	--Petz specifics
 	type = "wolf",
 	init_tamagochi_timer = true,
@@ -72,8 +72,8 @@ minetest.register_entity("petz:"..pet_name,{
 		moaning = "petz_wolf_moaning",
 	},
 	drops = {
-		{name = "petz:wolf_fur", chance = 5, min = 1, max = 1,},
-		{name = "petz:wolf_jaw", chance = 5, min = 1, max = 1,},
+		{name = "hades_petz:wolf_fur", chance = 5, min = 1, max = 1,},
+		{name = "hades_petz:wolf_jaw", chance = 5, min = 1, max = 1,},
 	},
 
 	--punch_start = 83, stand4_end = 95,
@@ -104,4 +104,4 @@ minetest.register_entity("petz:"..pet_name,{
 
 })
 
-petz:register_egg("petz:wolf", S("Wolf"), "petz_spawnegg_wolf.png", true)
+petz:register_egg("hades_petz:wolf", S("Wolf"), "petz_spawnegg_wolf.png", true)

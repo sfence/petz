@@ -19,7 +19,7 @@ local p1 = {x= -0.125, y = -0.5, z = -0.25}
 local p2 = {x= 0.0625, y = 0.125, z = 0.25}
 local collisionbox, collisionbox_baby = petz.get_collisionbox(p1, p2, scale_model, scale_baby)
 
-minetest.register_entity("petz:"..pet_name, {
+minetest.register_entity("hades_petz:"..pet_name, {
 	--Petz specifics
 	type = pet_name,
 	is_mountable = true,
@@ -46,7 +46,7 @@ minetest.register_entity("petz:"..pet_name, {
 	pregnant_count = 5,
 	follow = petz.settings.pony_follow,
 	drops = {
-		{name = "petz:bone", chance = 6, min = 1, max = 1,},
+		{name = "hades_petz:bone", chance = 6, min = 1, max = 1,},
 	},
 	rotate = petz.settings.rotate,
 	physical = true,
@@ -133,4 +133,4 @@ minetest.register_entity("petz:"..pet_name, {
 	end,
 })
 
-petz:register_egg("petz:pony", S("Pony"), "petz_spawnegg_pony.png", true)
+petz:register_egg("hades_petz:pony", S("Pony"), "petz_spawnegg_pony.png", true)

@@ -37,7 +37,7 @@ function petz.throw(self, dtime, damage, effect, particles, sound)
 				end
 				if effect then
 					if effect == "cobweb" then
-						minetest.set_node(ent_pos, {name = "petz:cobweb"})
+						minetest.set_node(ent_pos, {name = "hades_petz:cobweb"})
 					end
 				end
 				if particles then
@@ -79,7 +79,7 @@ function petz.throw(self, dtime, damage, effect, particles, sound)
 						}
 						local node_above = minetest.get_node(pos_above)
 						if node_above.name == "air" then
-							minetest.set_node(pos_above, {name = "petz:cobweb"})
+							minetest.set_node(pos_above, {name = "hades_petz:cobweb"})
 						end
 					end
 				end

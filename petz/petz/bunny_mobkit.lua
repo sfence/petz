@@ -18,7 +18,7 @@ local p1 = {x= -0.25, y = -0.5, z = -0.125}
 local p2 = {x= 0.25, y = -0.0625, z = 0.1875}
 local collisionbox, collisionbox_baby = petz.get_collisionbox(p1, p2, scale_model, scale_baby)
 
-minetest.register_entity("petz:"..pet_name, {
+minetest.register_entity("hades_petz:"..pet_name, {
 	--Petz specifics
 	type = "bunny",
 	init_tamagochi_timer = true,
@@ -35,9 +35,9 @@ minetest.register_entity("petz:"..pet_name, {
 	capture_item = "net",
 	follow = petz.settings.bunny_follow,
 	drops = {
-		{name = "petz:raw_rabbit", chance = 1, min = 1, max = 1,},
-		{name = "petz:rabbit_hide", chance = 3, min = 1, max = 1,},
-		{name = "petz:bone", chance = 5, min = 1, max = 1,},
+		{name = "hades_petz:raw_rabbit", chance = 1, min = 1, max = 1,},
+		{name = "hades_petz:rabbit_hide", chance = 3, min = 1, max = 1,},
+		{name = "hades_petz:bone", chance = 5, min = 1, max = 1,},
 	},
 	sleep_at_night = true,
 	sleep_ratio = 0.3,
@@ -113,4 +113,4 @@ minetest.register_entity("petz:"..pet_name, {
 	end,
 })
 
-petz:register_egg("petz:bunny", S("Bunny"), "petz_spawnegg_bunny.png", true)
+petz:register_egg("hades_petz:bunny", S("Bunny"), "petz_spawnegg_bunny.png", true)

@@ -274,7 +274,7 @@ petz.create_form = function(player_name, buy)
 end
 
 minetest.register_on_player_receive_fields(function(player, formname, fields)
-	if (formname ~= "petz:form_orders") then
+	if (formname ~= "hades_petz:form_orders") then
 		return false
 	end
 	local player_name = player:get_player_name()
@@ -283,7 +283,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 		local tab_id = tonumber(fields.tabheader)
 		if tab_id > 0 then
 			create_context(player_name, tab_id)
-			minetest.show_formspec(player_name, "petz:form_orders", petz.create_form(player_name, false))
+			minetest.show_formspec(player_name, "hades_petz:form_orders", petz.create_form(player_name, false))
 		end
 		return
 	end
@@ -350,15 +350,15 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 							"label[4,0;"..S("Saddlebag").."]"..
 							"list[detached:saddlebag_inventory;saddlebag;0,1;8,2;]"..
 							"list[current_player;main;0,4;8,4;]"
-			minetest.show_formspec(player_name, "petz:saddlebag_inventory", formspec)
+			minetest.show_formspec(player_name, "hades_petz:saddlebag_inventory", formspec)
 		elseif fields.btn_bowl then
-			minetest.show_formspec(player_name, "petz:food_form", petz.create_food_form(pet))
+			minetest.show_formspec(player_name, "hades_petz:food_form", petz.create_food_form(pet))
 		elseif fields.btn_affinity then
-			minetest.show_formspec(player_name, "petz:affinity_form", petz.create_affinity_form(pet))
+			minetest.show_formspec(player_name, "hades_petz:affinity_form", petz.create_affinity_form(pet))
 		elseif fields.btn_horseshoes then
 			petz.horseshoes_reset(pet)
 		elseif fields.btn_abandon then
-			minetest.show_formspec(player_name, "petz:abandon_form", petz.get_abandon_confirmation())
+			minetest.show_formspec(player_name, "hades_petz:abandon_form", petz.get_abandon_confirmation())
 		elseif fields.btn_herding then
 			pet.herding = mobkit.remember(pet, "herding", minetest.is_yes(fields.btn_herding))
 		elseif fields.chk_for_sale then
@@ -377,7 +377,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 		elseif fields.btn_set_home then
 			pet.home_pos= mobkit.remember(pet, "home_pos", pet.object:get_pos())
 			create_context(player_name, 3)
-			minetest.show_formspec(player_name, "petz:form_orders", petz.create_form(player_name, false))
+			minetest.show_formspec(player_name, "hades_petz:form_orders", petz.create_form(player_name, false))
 		end
 		if fields.ipt_name then
 			pet.tag = minetest.formspec_escape(string.sub(fields.ipt_name, 1 , 12))
@@ -399,7 +399,7 @@ end)
 
 --On receive fields
 minetest.register_on_player_receive_fields(function(player, formname, fields)
-	if formname ~= "petz:saddlebag_inventory" then
+	if formname ~= "hades_petz:saddlebag_inventory" then
 		return false
 	end
 	--Save the saddlebag content
@@ -477,7 +477,7 @@ petz.create_food_form = function(self)
 		local breed_item_desc
 		if not(breed_item) then
 			if self.is_mountable then
-				breed_item_desc = minetest.registered_items["petz:glass_syringe"].description
+				breed_item_desc = minetest.registered_items["hades_petz:glass_syringe"].description
 			else
 				breed_item_desc = "unknown"
 			end
@@ -520,14 +520,14 @@ end
 
 --On receive fields
 minetest.register_on_player_receive_fields(function(player, formname, fields)
-	if formname ~= "petz:food_form" and formname ~= "petz:affinity_form" then
+	if formname ~= "hades_petz:food_form" and formname ~= "hades_petz:affinity_form" then
 		return false
 	end
 	local player_name = player:get_player_name()
 	local pet = petz.pet[player_name]
 	if pet and (mobkit.is_alive(pet)) then
 		create_context(player_name, 1)
-		minetest.show_formspec(player_name, "petz:form_orders", petz.create_form(player_name, false))
+		minetest.show_formspec(player_name, "hades_petz:form_orders", petz.create_form(player_name, false))
 	end
 	return true
 end)
@@ -546,7 +546,7 @@ function petz.get_abandon_confirmation()
 end
 
 minetest.register_on_player_receive_fields(function(player, formname, fields)
-	if formname ~= "petz:abandon_form" then
+	if formname ~= "hades_petz:abandon_form" then
 		return false
 	end
 	local player_name = player:get_player_name()
@@ -558,7 +558,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 		end
 	else
 		create_context(player_name, 2)
-		minetest.show_formspec(player_name, "petz:form_orders", petz.create_form(player_name, false))
+		minetest.show_formspec(player_name, "hades_petz:form_orders", petz.create_form(player_name, false))
 	end
 	return true
 end)

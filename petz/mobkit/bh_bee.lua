@@ -18,8 +18,8 @@ function petz.bh_create_beehive(self, pos)
 			y = pos.y + self.max_height,
 			z = pos.z + (self.max_height*4),
 		}
-		if #minetest.find_nodes_in_area(minp, maxp, {"petz:beehive"}) < 1 then
-			minetest.set_node(pos, {name= "petz:beehive"})
+		if #minetest.find_nodes_in_area(minp, maxp, {"hades_petz:beehive"}) < 1 then
+			minetest.set_node(pos, {name= "hades_petz:beehive"})
 			mokapi.remove_mob(self)
 			return true
 		else

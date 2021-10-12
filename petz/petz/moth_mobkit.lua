@@ -8,7 +8,7 @@ local p1 = {x= -0.25, y = -0.5, z = -0.4375}
 local p2 = {x= 0.3125, y = -0.1875, z = 0.1875}
 local collisionbox = petz.get_collisionbox(p1, p2, scale_model, nil)
 
-minetest.register_entity("petz:"..pet_name,{
+minetest.register_entity("hades_petz:"..pet_name,{
 	--Petz specifics
 	type = "moth",
 	init_tamagochi_timer = false,
@@ -17,7 +17,7 @@ minetest.register_entity("petz:"..pet_name,{
 	lay_eggs = true,
 	lay_eggs_in_nest = false,
 	type_of_egg = "node",
-	bottled = "petz:bottle_moth",
+	bottled = "hades_petz:bottle_moth",
 	max_height = 3,
 	has_affinity = false,
 	is_wild = false,
@@ -91,4 +91,4 @@ minetest.register_entity("petz:"..pet_name,{
 
 })
 
-petz:register_egg("petz:moth", S("Moth"), "petz_spawnegg_moth.png", true)
+petz:register_egg("hades_petz:moth", S("Moth"), "petz_spawnegg_moth.png", true)

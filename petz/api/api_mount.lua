@@ -22,17 +22,17 @@ petz.mount = function(self, clicker, wielded_item, wielded_item_name)
 		elseif (self.saddle or self.saddlebag or self.wagon) and wielded_item_name == petz.settings.shears then
 			if self.wagon then
 				self.wagon:remove()
-				mokapi.drop_item(self, ItemStack("petz:wagon 1"))
+				mokapi.drop_item(self, ItemStack("hades_petz:wagon 1"))
 				self.wagon = nil
 			end
 			petz.free_saddles(self)
 			petz.set_properties(self, {textures = {"petz_"..self.type.."_"..self.skin_colors[self.texture_no]..".png"}})
 			return false
-		elseif (not(self.driver) and not(self.is_baby)) and ((wielded_item_name == "petz:saddle") or (wielded_item_name == "petz:saddlebag")) then -- Put on saddle if tamed
+		elseif (not(self.driver) and not(self.is_baby)) and ((wielded_item_name == "hades_petz:saddle") or (wielded_item_name == "hades_petz:saddlebag")) then -- Put on saddle if tamed
 			local put_saddle = false
-			if wielded_item_name == "petz:saddle" and not(self.saddle) then
+			if wielded_item_name == "hades_petz:saddle" and not(self.saddle) then
 				put_saddle = true
-			elseif wielded_item_name == "petz:saddlebag" and not(self.saddlebag) and not(self.type == "pony") then
+			elseif wielded_item_name == "hades_petz:saddlebag" and not(self.saddlebag) and not(self.type == "pony") then
 				put_saddle = true
 			end
 			if put_saddle then
@@ -54,7 +54,7 @@ end
 petz.put_saddle = function(self, clicker, wielded_item, wielded_item_name)
 	local saddle_type
 	local another_saddle = ""
-	if wielded_item_name == "petz:saddle" then
+	if wielded_item_name == "hades_petz:saddle" then
 		saddle_type = "saddle"
 		self.saddle = true
 		mobkit.remember(self, "saddle", self.saddle)

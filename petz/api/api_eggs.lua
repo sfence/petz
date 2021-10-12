@@ -14,7 +14,7 @@ petz.lay_egg = function(self)
 	if self.type_of_egg == "item" then
 		local lay_egg_timing = petz.settings.lay_egg_timing
 		if mobkit.timer(self, math.random(lay_egg_timing - (lay_egg_timing*0.2), lay_egg_timing+ (lay_egg_timing*0.2))) then
-			minetest.add_item(pos, "petz:"..self.type.."_egg") --chicken/duck/penguin egg!
+			minetest.add_item(pos, "hades_petz:"..self.type.."_egg") --chicken/duck/penguin egg!
 			petz.increase_egg_count(self)
 		end
 	end
@@ -23,7 +23,7 @@ petz.lay_egg = function(self)
 		local nearby_nodes = minetest.find_nodes_in_area(
 			{x = pos.x - lay_range, y = pos.y - 1, z = pos.z - lay_range},
 			{x = pos.x + lay_range, y = pos.y + 1, z = pos.z + lay_range},
-			"petz:ducky_nest")
+			"hades_petz:ducky_nest")
 		if #nearby_nodes > 1 then
 			local nest_type
 			if self.type == "hen" then
@@ -32,7 +32,7 @@ petz.lay_egg = function(self)
 				nest_type = "ducky"
 			end
 			local nest_to_lay = nearby_nodes[math.random(1, #nearby_nodes)]
-			minetest.set_node(nest_to_lay, {name= "petz:"..nest_type.."_nest_egg"})
+			minetest.set_node(nest_to_lay, {name= "hades_petz:"..nest_type.."_nest_egg"})
 			petz.increase_egg_count(self)
 		end
 	end
@@ -43,7 +43,7 @@ petz.extract_egg_from_nest = function(pos, player, egg_type)
 	local inv = player:get_inventory()
 	if inv:room_for_item("main", egg_type) then
 		inv:add_item("main", egg_type) --add the egg to the player's inventory
-		minetest.set_node(pos, {name= "petz:ducky_nest"}) --Replace the node to a empty nest
+		minetest.set_node(pos, {name= "hades_petz:ducky_nest"}) --Replace the node to a empty nest
 	else
 		minetest.chat_send_player(player:get_player_name(), "No room in your inventory for the egg.")
 	end

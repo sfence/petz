@@ -149,7 +149,7 @@ function petz.herbivore_brain(self)
 				end
 			end
 		end
-		--search for a petz:pet_bowl or a bale
+		--search for a hades_petz:pet_bowl or a bale
 		if prty < 4 and self.tamed then
 			local view_range = self.view_range
 			local nearby_nodes = minetest.find_nodes_in_area(

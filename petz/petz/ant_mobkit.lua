@@ -40,16 +40,16 @@ for i=1, 3 do
 		attack_player = false
 		lay_eggs = true
 		drops = {
-			{name = "petz:ant_head", chance = 3, min = 1, max = 1,},
-			{name = "petz:ant_body", chance = 3, min = 1, max = 1,},
-			{name = "petz:ant_leag", chance = 3, min = 1, max = 6,},
+			{name = "hades_petz:ant_head", chance = 3, min = 1, max = 1,},
+			{name = "hades_petz:ant_body", chance = 3, min = 1, max = 1,},
+			{name = "hades_petz:ant_leag", chance = 3, min = 1, max = 6,},
 		}
 	end
 	local p1 = {x= -0.1875, y = -0.5, z = -0.3125}
 	local p2 = {x= 0.25, y = 0.0625, z = 0.3125}
 	local collisionbox = petz.get_collisionbox(p1, p2, scale_model, nil)
 
-	minetest.register_entity("petz:"..pet_name, {
+	minetest.register_entity("hades_petz:"..pet_name, {
 		--Petz specifics
 		type = "ant",
 		ant_type = ant_type,
@@ -129,5 +129,5 @@ for i=1, 3 do
 			petz.on_step(self, dtime)
 		end,
 	})
-	petz:register_egg("petz:"..pet_name, S(description), "petz_spawnegg_"..pet_name..".png", false)
+	petz:register_egg("hades_petz:"..pet_name, S(description), "petz_spawnegg_"..pet_name..".png", false)
 end

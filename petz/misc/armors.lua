@@ -15,7 +15,7 @@ end
 --THE SILK CLOTHES
 --
 
-armor:register_armor("petz:prince_crown", {
+armor:register_armor("hades_petz:prince_crown", {
 	description = S("Prince Crown"),
 	inventory_image = "petz_prince_crown_inv.png",
 	texture = "petz_prince_crown.png",
@@ -29,7 +29,7 @@ armor:register_armor("petz:prince_crown", {
 	end,
 })
 
-armor:register_armor("petz:silk_dress_coat", {
+armor:register_armor("hades_petz:silk_dress_coat", {
 	description = S("Silk Dress Coat"),
 	inventory_image = "petz_silk_dress_coat_inv.png",
 	texture = "petz_silk_dress_coat.png",
@@ -43,7 +43,7 @@ armor:register_armor("petz:silk_dress_coat", {
 	end,
 })
 
-armor:register_armor("petz:silk_pants", {
+armor:register_armor("hades_petz:silk_pants", {
 	description = S("Silk Pants"),
 	inventory_image = "petz_silk_pants_inv.png",
 	texture = "petz_silk_pants.png",
@@ -57,7 +57,7 @@ armor:register_armor("petz:silk_pants", {
 	end,
 })
 
-armor:register_armor("petz:silk_boots", {
+armor:register_armor("hades_petz:silk_boots", {
 	description = S("Silk Boots"),
 	inventory_image = "petz_silk_boots_inv.png",
 	texture = "petz_silk_boots.png",
@@ -76,46 +76,46 @@ armor:register_armor("petz:silk_boots", {
 --
 
 minetest.register_craft({
-	output = "petz:prince_crown",
+	output = "hades_petz:prince_crown",
 	type = "shaped",
 	recipe = {
 		{"default:gold_ingot", "", "default:gold_ingot"},
 		{"default:gold_ingot", "default:gold_ingot", "default:gold_ingot"},
-		{"petz:silk_bobbin", "petz:silk_bobbin", "petz:silk_bobbin"},
+		{"hades_petz:silk_bobbin", "hades_petz:silk_bobbin", "hades_petz:silk_bobbin"},
 	},
 })
 minetest.register_craft({
-	output = "petz:silk_dress_coat",
+	output = "hades_petz:silk_dress_coat",
 	type = "shaped",
 	recipe = {
-		{"petz:silk_bobbin", "dye:red", "petz:silk_bobbin"},
-		{"petz:silk_bobbin", "petz:silk_bobbin", "petz:silk_bobbin"},
-		{"petz:silk_bobbin", "petz:silk_bobbin", "petz:silk_bobbin"},
+		{"hades_petz:silk_bobbin", "dye:red", "hades_petz:silk_bobbin"},
+		{"hades_petz:silk_bobbin", "hades_petz:silk_bobbin", "hades_petz:silk_bobbin"},
+		{"hades_petz:silk_bobbin", "hades_petz:silk_bobbin", "hades_petz:silk_bobbin"},
 	},
 })
 minetest.register_craft({
-	output = "petz:silk_pants",
+	output = "hades_petz:silk_pants",
 	type = "shaped",
 	recipe = {
-		{"petz:silk_bobbin", "default:gold_ingot", "petz:silk_bobbin"},
-		{"petz:silk_bobbin", "dye:brown", "petz:silk_bobbin"},
-		{"petz:silk_bobbin", "", "petz:silk_bobbin"},
+		{"hades_petz:silk_bobbin", "default:gold_ingot", "hades_petz:silk_bobbin"},
+		{"hades_petz:silk_bobbin", "dye:brown", "hades_petz:silk_bobbin"},
+		{"hades_petz:silk_bobbin", "", "hades_petz:silk_bobbin"},
 	},
 })
 minetest.register_craft({
-	output = "petz:silk_boots",
+	output = "hades_petz:silk_boots",
 	type = "shaped",
 	recipe = {
-		{"petz:silk_bobbin", "", "petz:silk_bobbin"},
+		{"hades_petz:silk_bobbin", "", "hades_petz:silk_bobbin"},
 		{"default:gold_ingot", "", "default:gold_ingot"},
-		{"petz:silk_bobbin", "dye:brown", "petz:silk_bobbin"},
+		{"hades_petz:silk_bobbin", "dye:brown", "hades_petz:silk_bobbin"},
 	},
 })
 
 --
 --THE PUMPKIN HOOD
 --
-armor:register_armor("petz:pumpkin_hood", {
+armor:register_armor("hades_petz:pumpkin_hood", {
 	description = S("Pumpkin Hood"),
 	inventory_image = "petz_pumpkin_hood_inv.png",
 	texture = "petz_pumpkin_hood.png",
@@ -134,7 +134,7 @@ armor:register_armor("petz:pumpkin_hood", {
 --THE WOLF COAT
 --
 
-armor:register_armor("petz:prince_north_coat", {
+armor:register_armor("hades_petz:prince_north_coat", {
 	description = S("Prince of North Coat"),
 	inventory_image = "petz_prince_north_coat_inv.png",
 	texture = "petz_prince_north_coat.png",
@@ -149,10 +149,10 @@ armor:register_armor("petz:prince_north_coat", {
 })
 
 minetest.register_craft({
-	output = "petz:prince_north_coat",
+	output = "hades_petz:prince_north_coat",
 	type = "shaped",
 	recipe = {
-		{"", "petz:wolf_fur", ""},
+		{"", "hades_petz:wolf_fur", ""},
 		{"", "wool:blue", ""},
 		{"group:leather", "wool:blue", "group:leather"},
 	},
@@ -162,7 +162,7 @@ minetest.register_craft({
 --THE ANT HELMET
 --
 
-armor:register_armor("petz:ant_helmet", {
+armor:register_armor("hades_petz:ant_helmet", {
 	description = S("Ant Helmet"),
 	inventory_image = "petz_ant_helmet_inv.png",
 	texture = "petz_ant_helmet.png",
@@ -177,11 +177,11 @@ armor:register_armor("petz:ant_helmet", {
 })
 
 minetest.register_craft({
-	output = "petz:ant_helmet",
+	output = "hades_petz:ant_helmet",
 	type = "shaped",
 	recipe = {
-		{"petz:ant_head", "petz:ant_head", "petz:ant_head"},
-		{"petz:ant_head", "", "petz:ant_head"},
+		{"hades_petz:ant_head", "hades_petz:ant_head", "hades_petz:ant_head"},
+		{"hades_petz:ant_head", "", "hades_petz:ant_head"},
 		{"", "", ""},
 	},
 })

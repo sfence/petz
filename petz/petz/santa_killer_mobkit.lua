@@ -10,7 +10,7 @@ local mesh = 'character.b3d'
 local textures = {"petz_santa_killer.png"}
 local collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3}
 
-minetest.register_entity("petz:"..pet_name,{
+minetest.register_entity("hades_petz:"..pet_name,{
 	--Petz specifics
 	type = "santa_killer",
 	init_tamagochi_timer = false,
@@ -25,9 +25,9 @@ minetest.register_entity("petz:"..pet_name,{
 	capture_item = nil,
 	follow = petz.settings.santa_killer_follow,
 	drops = {
-		{name = "petz:christmas_present", chance = 3, min = 1, max = 1,},
-		{name = "petz:gingerbread_cookie", chance = 1, min = 1, max = 6,},
-		{name = "petz:candy_cane", chance = 1, min = 1, max = 6,},
+		{name = "hades_petz:christmas_present", chance = 3, min = 1, max = 1,},
+		{name = "hades_petz:gingerbread_cookie", chance = 1, min = 1, max = 6,},
+		{name = "hades_petz:candy_cane", chance = 1, min = 1, max = 6,},
 	},
 	rotate = petz.settings.rotate,
 	physical = true,
@@ -90,4 +90,4 @@ minetest.register_entity("petz:"..pet_name,{
 
 })
 
-petz:register_egg("petz:santa_killer", S("Santa Killer"), "petz_spawnegg_santa_killer.png", false)
+petz:register_egg("hades_petz:santa_killer", S("Santa Killer"), "petz_spawnegg_santa_killer.png", false)

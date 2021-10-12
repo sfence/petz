@@ -8,7 +8,7 @@ function petz.bh_herding(self, pos, player)
 	end
 	local join_herd = false
 	local tpos
-	local ent_obj = mobkit.get_closest_entity(self, "petz:"..self.type) -- look for a herd to join with
+	local ent_obj = mobkit.get_closest_entity(self, "hades_petz:"..self.type) -- look for a herd to join with
 	if ent_obj then
 		local ent = ent_obj:get_luaentity()
 		if ent and ent.herding then
@@ -24,7 +24,7 @@ function petz.bh_herding(self, pos, player)
 		if self.owner == player_name  then
 			local wielded_item = player:get_wielded_item()
 			local wielded_item_name = wielded_item:get_name()
-			if wielded_item_name == "petz:shepherd_crook" then
+			if wielded_item_name == "hades_petz:shepherd_crook" then
 				tpos = player:get_pos()
 				if vector.distance(pos, tpos) > petz.settings.herding_shepherd_distance then -- if player close
 					join_herd = true

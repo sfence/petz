@@ -10,13 +10,13 @@ local mesh = 'character.b3d'
 local textures = {"petz_mr_pumpkin.png"}
 local collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3}
 local drops = {
-		{name = "petz:jack_o_lantern", chance = 3, min = 1, max = 1,},
+		{name = "hades_petz:jack_o_lantern", chance = 3, min = 1, max = 1,},
 }
 if minetest.get_modpath("3d_armor") ~= nil then
-	table.insert(drops, {name = "petz:pumpkin_hood", chance = 4, min = 1, max = 1,})
+	table.insert(drops, {name = "hades_petz:pumpkin_hood", chance = 4, min = 1, max = 1,})
 end
 
-minetest.register_entity("petz:"..pet_name,{
+minetest.register_entity("hades_petz:"..pet_name,{
 	--Petz specifics
 	type = "mr_pumpkin",
 	init_tamagochi_timer = false,
@@ -94,4 +94,4 @@ minetest.register_entity("petz:"..pet_name,{
 
 })
 
-petz:register_egg("petz:mr_pumpkin", S("Mr Pumpkin"), "petz_spawnegg_mr_pumpkin.png", false)
+petz:register_egg("hades_petz:mr_pumpkin", S("Mr Pumpkin"), "petz_spawnegg_mr_pumpkin.png", false)

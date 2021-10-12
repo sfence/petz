@@ -112,7 +112,7 @@ local settings_def = {
 	name = "lasso",
 	type = "string",
 	split = false,
-	default = "petz:lasso",
+	default = "hades_petz:lasso",
 	},
 	{
 	name = "rob_mobs",
@@ -124,7 +124,7 @@ local settings_def = {
 	name = "shears",
 	type = "string",
 	split = false,
-	default = "petz:shears",
+	default = "hades_petz:shears",
 	},
 	--Look at
 	{

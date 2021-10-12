@@ -76,11 +76,11 @@ petz.milk_milk = function(self, clicker)
 	local wielded_item = clicker:get_wielded_item()
 	wielded_item:take_item()
 	clicker:set_wielded_item(wielded_item)
-	if inv:room_for_item("main", "petz:bucket_milk") then
-		inv:add_item("main","petz:bucket_milk")
+	if inv:room_for_item("main", "hades_petz:bucket_milk") then
+		inv:add_item("main","hades_petz:bucket_milk")
 		mokapi.make_sound("object", self.object, "petz_"..self.type.."_moaning", petz.settings.max_hear_distance)
 	else
-		minetest.add_item(self.object:get_pos(), "petz:bucket_milk")
+		minetest.add_item(self.object:get_pos(), "hades_petz:bucket_milk")
 	end
 	self.milked = mobkit.remember(self, "milked", true)
 end
@@ -90,7 +90,7 @@ end
 ---
 petz.cut_feather = function(self, clicker)
 	local inv = clicker:get_inventory()
-	local item_stack= "petz:ducky_feather"
+	local item_stack= "hades_petz:ducky_feather"
 	if inv:room_for_item("main", item_stack) then
 		inv:add_item("main", item_stack)
 	else

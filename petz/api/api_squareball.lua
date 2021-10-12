@@ -10,7 +10,7 @@ function petz.spawn_square_ball(user, strength)
 	local dir = user:get_look_dir()
 	local yaw = user:get_look_horizontal()
 
-	local obj = minetest.add_entity(pos, "petz:ent_square_ball")
+	local obj = minetest.add_entity(pos, "hades_petz:ent_square_ball")
 	if not obj then
 		return
 	end
@@ -20,7 +20,7 @@ function petz.spawn_square_ball(user, strength)
 	return true
 end
 
-minetest.register_node("petz:square_ball", {
+minetest.register_node("hades_petz:square_ball", {
 	description = S("Square Ball (use to throw)"),
 	--inventory_image = "petz_square_ball.png",
 	tiles = {"petz_square_ball.png", "petz_square_ball.png", "petz_square_ball.png", "petz_square_ball.png",
@@ -28,7 +28,7 @@ minetest.register_node("petz:square_ball", {
 	visual_scale = 0.35,
 	is_ground_content = false,
     groups = {wood = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 3},
-    sounds = default.node_sound_wood_defaults(),
+    sounds = hades_sounds.node_sound_wood_defaults(),
 	on_use = function(itemstack, user, pointed_thing)
 		local strength = 20
 		if not petz.spawn_square_ball(user, strength) then
@@ -41,7 +41,7 @@ minetest.register_node("petz:square_ball", {
 
 minetest.register_craft({
     type = "shaped",
-    output = 'petz:square_ball',
+    output = 'hades_petz:square_ball',
     recipe = {
         {'wool:blue', 'wool:white', 'wool:red'},
         {'wool:white', 'farming:string', 'wool:white'},
@@ -68,12 +68,12 @@ petz.attach_squareball = function(self, thing_ent, thing_ref, shooter_name)
 	end
 end
 
-minetest.register_entity("petz:ent_square_ball", {
+minetest.register_entity("hades_petz:ent_square_ball", {
 	hp_max = 4,       -- possible to catch the arrow (pro skills)
 	physical = false, -- use Raycast
 	collisionbox = {-0.1, -0.1, -0.1, 0.1, 0.1, 0.1},
 	visual = "wielditem",
-	textures = {"petz:square_ball"},
+	textures = {"hades_petz:square_ball"},
 	visual_size = {x = 0.2, y = 0.15},
 	old_pos = nil,
 	shooter_name = "",
@@ -92,7 +92,7 @@ minetest.register_entity("petz:ent_square_ball", {
 		if self.object:get_attach() then --if attached
 			local attach = self.object:get_attach()
 			local inv = clicker:get_inventory()
-			local new_stack = "petz:square_ball"
+			local new_stack = "hades_petz:square_ball"
 			if inv:room_for_item("main", new_stack) then
 				inv:add_item("main", new_stack)
 			else
@@ -144,7 +144,7 @@ minetest.register_entity("petz:ent_square_ball", {
 			elseif thing.type == "node" then
 				local name = minetest.get_node(thing.under).name
 				if minetest.registered_items[name].walkable then
-					local itemstack_squareball = ItemStack("petz:square_ball")
+					local itemstack_squareball = ItemStack("hades_petz:square_ball")
 					--local meta = itemstack_squareball:get_meta()
 					--meta:set_string("shooter_name", self.shooter_name)
 					minetest.item_drop(itemstack_squareball,

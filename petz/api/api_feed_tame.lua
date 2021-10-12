@@ -71,7 +71,7 @@ end
 
 petz.tame_whip= function(self, hitter)
 		local wielded_item_name= hitter:get_wielded_item():get_name()
-		if (wielded_item_name == "petz:whip") then
+		if (wielded_item_name == "hades_petz:whip") then
 			if not self.tamed then
 				--The mob can be tamed lashed with a whip
 				self.lashing_count = self.lashing_count + 1
