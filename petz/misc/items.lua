@@ -12,8 +12,8 @@ minetest.register_craft({
 	output = "hades_petz:hairbrush",
 	recipe = {
 		{"", "", ""},
-		{"", "default:stick", "farming:string"},
-		{"default:stick", "", ""},
+		{"", "hades_core:stick", "hades_farming:string"},
+		{"hades_core:stick", "", ""},
 	}
 })
 
@@ -93,9 +93,9 @@ minetest.register_craft({
     type = "shaped",
     output = "hades_petz:whip",
     recipe = {
-        {'', '', 'farming:string'},
-        {'', 'farming:string', 'dye:brown'},
-        {'default:stick', '', ''},
+        {'', '', 'hades_farming:string'},
+        {'', 'hades_farming:string', 'dye:brown'},
+        {'hades_core:stick', '', ''},
     }
 })
 
@@ -107,7 +107,7 @@ minetest.register_craftitem("hades_petz:bucket_milk", {
     inventory_image = "petz_bucket_milk.png",
     groups = {milk_bucket = 1, food = 3, food_milk = 1},
     on_use = function (itemstack, user, pointed_thing)
-        return minetest.do_item_eat(3, "bucket:bucket_empty", itemstack, user, pointed_thing)
+        return minetest.do_item_eat(3, "hades_bucket:bucket_empty", itemstack, user, pointed_thing)
     end,
 })
 
@@ -253,11 +253,11 @@ minetest.register_craft({
 	type = "shaped",
 	output = "hades_petz:fishtank",
 	recipe = {
-		{"default:glass", "default:glass", "default:glass"},
-		{"default:glass", "group:water_bucket", "default:glass"},
-		{"default:glass", "default:glass", "default:glass"},
+		{"hades_core:glass", "hades_core:glass", "hades_core:glass"},
+		{"hades_core:glass", "group:water_bucket", "hades_core:glass"},
+		{"hades_core:glass", "hades_core:glass", "hades_core:glass"},
 	},
-	replacements = {{"group:water_bucket", "bucket:bucket_empty"}}
+	replacements = {{"group:water_bucket", "hades_bucket:bucket_empty"}}
 })
 
 --Metal Syringe
@@ -281,7 +281,7 @@ minetest.register_craft({
     recipe = {
         {"", "", "vessels:glass_fragments"},
         {"", "vessels:glass_fragments", ""},
-        {"default:steel_ingot", "", ""},
+        {"hades_core:steel_ingot", "", ""},
     }
 })
 
@@ -297,8 +297,8 @@ if petz.settings.shears == "hades_petz:shears" then -- Shears
 		type = "shaped",
 		output = 'hades_petz:shears',
 		recipe = {
-			{'', 'default:steel_ingot', ''},
-			{'', 'group:stick', 'default:steel_ingot'},
+			{'', 'hades_core:steel_ingot', ''},
+			{'', 'group:stick', 'hades_core:steel_ingot'},
 		}
 	})
 end
@@ -314,9 +314,9 @@ if petz.settings.lasso == "hades_petz:lasso" then
 	minetest.register_craft({
 		output = "hades_petz:lasso",
 		recipe = {
-			{"farming:string", "farming:string", "farming:string"},
-			{"farming:string", "", "farming:string"},
-			{"", "farming:string", ""},
+			{"hades_farming:string", "hades_farming:string", "hades_farming:string"},
+			{"hades_farming:string", "", "hades_farming:string"},
+			{"", "hades_farming:string", ""},
 		}
 	})
 end
@@ -334,8 +334,8 @@ minetest.register_craft({
 	output = "hades_petz:saddle",
 	recipe = {
 		{"hades_petz:leather", "hades_petz:leather", "hades_petz:leather"},
-		{"hades_petz:leather", "default:steel_ingot", "hades_petz:leather"},
-		{"hades_petz:leather", "default:steel_ingot", "hades_petz:leather"},
+		{"hades_petz:leather", "hades_core:steel_ingot", "hades_petz:leather"},
+		{"hades_petz:leather", "hades_core:steel_ingot", "hades_petz:leather"},
 	}
 })
 
@@ -503,7 +503,7 @@ minetest.register_craft({
 	output = "hades_petz:beeswax_candle 2",
 	type = "shaped",
 		recipe = {
-		{"", "farming:string", ""},
+		{"", "hades_farming:string", ""},
 		{"", "hades_petz:beeswax", ""},
 		{"", "hades_petz:beeswax", ""},
 	}
@@ -528,7 +528,7 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "shaped",
-	output = "default:book",
+	output = "hades_core:book",
 	recipe = {
 		{"hades_petz:parchment", "", ""},
 		{"hades_petz:parchment", "", ""},
@@ -547,9 +547,9 @@ minetest.register_craft({
 	type = "shaped",
 	output = "hades_petz:horseshoe",
 	recipe = {
-		{"", "default:steel_ingot", ""},
-		{"default:steel_ingot", "", "default:steel_ingot"},
-		{"default:steel_ingot", "", "default:steel_ingot"},
+		{"", "hades_core:steel_ingot", ""},
+		{"hades_core:steel_ingot", "", "hades_core:steel_ingot"},
+		{"hades_core:steel_ingot", "", "hades_core:steel_ingot"},
 	}
 })
 

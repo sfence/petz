@@ -227,8 +227,8 @@ minetest.register_craft({
     type = "shaped",
     output = 'hades_petz:silk_bobbin',
     recipe = {
-        {'hades_petz:cocoon', 'default:stick', 'hades_petz:cocoon'},
-        {'hades_petz:cocoon', 'default:stick', 'hades_petz:cocoon'},
-        {'hades_petz:cocoon', 'default:stick', 'hades_petz:cocoon'},
+        {'hades_petz:cocoon', 'hades_core:stick', 'hades_petz:cocoon'},
+        {'hades_petz:cocoon', 'hades_core:stick', 'hades_petz:cocoon'},
+        {'hades_petz:cocoon', 'hades_core:stick', 'hades_petz:cocoon'},
     }
 })

@@ -72,7 +72,7 @@ minetest.register_craft({
 	output = "hades_petz:wagon_wheel",
 	recipe = {
 		{"group:wood", "group:wood", "group:wood"},
-		{"group:wood", "default:iron_lump", "group:wood"},
+		{"group:wood", "hades_core:iron_lump", "group:wood"},
 		{"group:wood", "group:wood", "group:wood"},
 	}
 })

@@ -11,7 +11,7 @@ minetest.register_craft({
 	recipe = {
 			{"hades_petz:bone", "hades_petz:bone", "hades_petz:bone"},
 			{"bucket:bucket_water", "bucket:bucket_water", "bucket:bucket_water"},
-			{"bucket:bucket_water", "default:torch", "bucket:bucket_water"},
+			{"bucket:bucket_water", "hades_core:torch", "bucket:bucket_water"},
 	},
 	replacements = {
 		{"bucket:bucket_water", "bucket:bucket_empty 5"},

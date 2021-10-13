@@ -19,7 +19,7 @@ minetest.register_craft({
     recipe = {
         {'', '', ''},
         {'', 'hades_petz:ducky_feather', ''},
-        {'', 'default:steel_ingot', ''},
+        {'', 'hades_core:steel_ingot', ''},
     }
 })
 

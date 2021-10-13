@@ -79,8 +79,8 @@ minetest.register_craft({
 	output = "hades_petz:prince_crown",
 	type = "shaped",
 	recipe = {
-		{"default:gold_ingot", "", "default:gold_ingot"},
-		{"default:gold_ingot", "default:gold_ingot", "default:gold_ingot"},
+		{"hades_core:gold_ingot", "", "hades_core:gold_ingot"},
+		{"hades_core:gold_ingot", "hades_core:gold_ingot", "hades_core:gold_ingot"},
 		{"hades_petz:silk_bobbin", "hades_petz:silk_bobbin", "hades_petz:silk_bobbin"},
 	},
 })
@@ -97,7 +97,7 @@ minetest.register_craft({
 	output = "hades_petz:silk_pants",
 	type = "shaped",
 	recipe = {
-		{"hades_petz:silk_bobbin", "default:gold_ingot", "hades_petz:silk_bobbin"},
+		{"hades_petz:silk_bobbin", "hades_core:gold_ingot", "hades_petz:silk_bobbin"},
 		{"hades_petz:silk_bobbin", "dye:brown", "hades_petz:silk_bobbin"},
 		{"hades_petz:silk_bobbin", "", "hades_petz:silk_bobbin"},
 	},
@@ -107,7 +107,7 @@ minetest.register_craft({
 	type = "shaped",
 	recipe = {
 		{"hades_petz:silk_bobbin", "", "hades_petz:silk_bobbin"},
-		{"default:gold_ingot", "", "default:gold_ingot"},
+		{"hades_core:gold_ingot", "", "hades_core:gold_ingot"},
 		{"hades_petz:silk_bobbin", "dye:brown", "hades_petz:silk_bobbin"},
 	},
 })

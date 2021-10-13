@@ -214,8 +214,8 @@ minetest.register_craft({
 	type = "shaped",
 	output = "hades_petz:christmas_present",
 	recipe = {
-		{"default:paper", "default:paper", "default:paper"},
-		{"dye:red", "default:chest", "dye:yellow"},
-		{"default:paper", "default:paper", "default:paper"},
+		{"hades_core:paper", "hades_core:paper", "hades_core:paper"},
+		{"dye:red", "hades_chests:chest", "dye:yellow"},
+		{"hades_core:paper", "hades_core:paper", "hades_core:paper"},
 	}
 })

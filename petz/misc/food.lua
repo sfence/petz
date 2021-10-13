@@ -297,7 +297,7 @@ minetest.register_craftitem("hades_petz:blueberry_cheese_cake", {
 minetest.register_craft({
 	type = "shapeless",
 	output = "hades_petz:blueberry_cheese_cake",
-    recipe = {"default:blueberries", "farming:wheat", "group:food_cheese", "group:food_egg"},
+    recipe = {"group:food_blueberries", "hades_farming:wheat", "group:food_cheese", "group:food_egg"},
 })
 
 minetest.register_craftitem("hades_petz:blueberry_ice_cream", {
@@ -310,8 +310,8 @@ minetest.register_craftitem("hades_petz:blueberry_ice_cream", {
 minetest.register_craft({
 	type = "shapeless",
 	output = "hades_petz:blueberry_ice_cream 3",
-    recipe = {"group:food_blueberries", "group:food_milk", "group:food_egg", "default:snow", "group:food_egg", "default:snow", "farming:wheat"},
-    replacements = {{"group:food_milk", "bucket:bucket_empty"}},
+    recipe = {"group:food_blueberries", "group:food_milk", "group:food_egg", "hades_core:snow", "group:food_egg", "hades_core:snow", "hades_farming:wheat"},
+    replacements = {{"group:food_milk", "hades_bucket:bucket_empty"}},
 })
 
 minetest.register_craftitem("hades_petz:blueberry_muffin", {
@@ -324,7 +324,7 @@ minetest.register_craftitem("hades_petz:blueberry_muffin", {
 minetest.register_craft({
 	type = "shapeless",
 	output = "hades_petz:blueberry_muffin 8",
-    recipe = {"group:food_blueberries", "farming:wheat", "farming:wheat", "group:food_egg", "group:food_egg", "default:paper", "group:food_milk"},
+    recipe = {"group:food_blueberries", "farming:wheat", "farming:wheat", "group:food_egg", "group:food_egg", "hades_core:paper", "group:food_milk"},
     replacements = {{"group:food_milk", "bucket:bucket_empty"}},
 })
 

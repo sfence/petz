@@ -22,7 +22,7 @@ minetest.register_craft({
 	output = "hades_petz:dreamcatcher",
 	recipe = {
 		{"", "group:wood", ""},
-		{"farming:string", "farming:string", "farming:string"},
+		{"hades_farming:string", "hades_farming:string", "hades_farming:string"},
 		{"hades_petz:ducky_feather", "hades_petz:ducky_feather", "hades_petz:ducky_feather"},
 	}
 })

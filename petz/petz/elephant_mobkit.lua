@@ -60,7 +60,8 @@ for i=1, 2 do
 		replace_offset = 0,
 		replace_what = {
 			{"group:grass", "air", -1},
-			{"default:dirt_with_dry_grass", "default:dirt", -2}
+			{"hades_core:dirt_with_grass", "hades_core:dirt_with_grass_l3", -2},
+			{"hades_core:dirt_with_grass_l3", "hades_core:dirt_with_grass_l1", -2}
 		},
 		rotate = petz.settings.rotate,
 		physical = true,

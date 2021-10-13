@@ -31,8 +31,11 @@ minetest.register_entity("hades_petz:"..pet_name,{
 	replace_rate = 10,
 	replace_offset = 0,
     replace_what = {
+        {"group:flower", "air", -1},
         {"group:grass", "air", -1},
-        {"default:dirt_with_grass", "default:dirt", -2}
+				{"hades_core:dirt_with_grass", "hades_core:dirt_with_grass_l3", -2},
+				{"hades_core:dirt_with_grass_l3", "hades_core:dirt_with_grass_l2", -2},
+				{"hades_core:dirt_with_grass_l2", "hades_core:dirt_with_grass_l1", -2},
     },
     poop = true,
 	rotate = petz.settings.rotate,

@@ -146,7 +146,7 @@ minetest.register_craft({
     recipe = {
         {'', '', ''},
         {'group:leaves', '', 'group:leaves'},
-        {'default:papyrus', 'default:papyrus', 'default:papyrus'},
+        {'hades_core:papyrus', 'hades_core:papyrus', 'hades_core:papyrus'},
     }
 })
 
@@ -237,7 +237,7 @@ minetest.register_craft({
     recipe = {
         {'', '', ''},
         {'group:leaves', 'hades_petz:ducky_egg', 'group:leaves'},
-        {'default:papyrus', 'default:papyrus', 'default:papyrus'},
+        {'hades_core:papyrus', 'hades_core:papyrus', 'hades_core:papyrus'},
     }
 })
 
@@ -342,9 +342,9 @@ minetest.register_craft({
     type = "shaped",
     output = 'hades_petz:bird_stand',
     recipe = {
-        {'default:stick', 'group:feather', 'default:stick'},
-        {'', 'default:stick', ''},
-        {'', 'default:stick', ''},
+        {'hades_core:stick', 'group:feather', 'hades_core:stick'},
+        {'', 'hades_core:stick', ''},
+        {'', 'hades_core:stick', ''},
     }
 })
 
@@ -516,7 +516,7 @@ if minetest.get_modpath("farming") ~= nil and farming.mod == "redo" then
 	minetest.register_craft({
 		type = "shapeless",
 		output = "hades_petz:jack_o_lantern",
-		recipe = {"farming:pumpkin", "default:torch"},
+		recipe = {"farming:pumpkin", "hades_core:torch"},
 	})
 else
    minetest.register_node("hades_petz:jack_o_lantern", {
@@ -547,7 +547,7 @@ if minetest.get_modpath("crops") ~= nil then
 	minetest.register_craft({
 		type = "shapeless",
 		output = "hades_petz:jack_o_lantern",
-		recipe = {"crops:pumpkin", "default:torch"},
+		recipe = {"crops:pumpkin", "hades_core:torch"},
 	})
 end
 
@@ -707,7 +707,7 @@ minetest.register_craft({
 	output = "hades_petz:butterfly_showcase",
 	recipe = {
 		{"group:wood", "hades_petz:butterfly_set", "group:wood"},
-		{"hades_petz:butterfly_set", "xpanes:pane_flat", "hades_petz:butterfly_set"},
+		{"hades_petz:butterfly_set", "hades_xpanes:pane_flat", "hades_petz:butterfly_set"},
 		{"group:wood", "hades_petz:butterfly_set", "group:wood"},
 	}
 })
@@ -864,29 +864,31 @@ minetest.register_node("hades_petz:grain_packet", {
 				rarity = 5,
 			},
 			{
-				items = {'default:apple'},
+				items = {'hades_core:apple'},
 				rarity = 15,
 			},
 			{
-			items = {'default:blueberries'},
+			items = {'hades_core:blueberries'},
 				rarity = 20,
 			},
 			{
-				items = {'default:iron_lump'},
+				items = {'hades_core:iron_lump'},
 				rarity = 25,
 			},
 			{
-				items = {'default:gold_lump'},
+				items = {'hades_core:gold_lump'},
 				rarity = 40,
 			},
 			{
-				items = {'default:diamond'},
+				items = {'hades_core:diamond'},
 				rarity = 80,
 			},
 		}
 	},
 })
 
+--[[
+-- disabled for hades revisited, flour craft colision
 minetest.register_craft({
 	type = "shapeless",
 	output = "hades_petz:grain_packet",
@@ -896,3 +898,4 @@ minetest.register_craft({
 		"farming:seed_wheat", "farming:seed_wheat", "farming:seed_wheat"
 	}
 })
+--]]

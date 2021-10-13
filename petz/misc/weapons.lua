@@ -25,7 +25,7 @@ petz.register_throw_entity("hades_petz:ent_jack_o_lantern_grenade", "hades_petz:
 minetest.register_craft({
 	type = "shapeless",
 	output = "hades_petz:jack_o_lantern_grenade",
-	recipe = {"hades_petz:jack_o_lantern", "tnt:gunpowder", "farming:string"},
+	recipe = {"hades_petz:jack_o_lantern", "hades_tnt:gunpowder", "hades_farming:string"},
 })
 
 
@@ -69,8 +69,8 @@ petz.register_throw_entity("hades_petz:ent_cobweb", "hades_petz:cobweb", 1, "cob
 minetest.register_craft({
 	output = "hades_petz:cobweb",
 	recipe = {
-		{"farming:string", "", "farming:string"},
-		{"", "farming:string", ""},
-		{"farming:string", "", "farming:string"},
+		{"hades_farming:string", "", "hades_farming:string"},
+		{"", "hades_farming:string", ""},
+		{"hades_farming:string", "", "hades_farming:string"},
 	}
 })
