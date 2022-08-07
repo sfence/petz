@@ -1,7 +1,7 @@
 petz.get_color_group = function(item_name)
 	local color_name
 	local name
-	for _, row in ipairs(dye.dyes) do
+	for _, row in ipairs(hades_dye.dyes) do
 		name = row[1]
 		color_name = "color_" .. name
 		if minetest.get_item_group(item_name, color_name) > 0 then

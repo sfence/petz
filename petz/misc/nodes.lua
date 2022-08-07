@@ -36,7 +36,7 @@ minetest.register_node("hades_petz:blue_stained_wood", {
 })
 
 if minetest.get_modpath("stairs") ~= nil then
-    stairs.register_stair_and_slab(
+    hades_stairs.register_stair_and_slab(
         "red_gables",
         "hades_petz:red_gables",
         {choppy = 2, stone = 1},
@@ -47,7 +47,7 @@ if minetest.get_modpath("stairs") ~= nil then
         S("Red Gables Slab"),
         hades_sounds.node_sound_stone_defaults()
     )
-    stairs.register_stair_and_slab(
+    hades_stairs.register_stair_and_slab(
         "blue_stained_wood",
         "hades_petz:blue_stained_wood",
         {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
